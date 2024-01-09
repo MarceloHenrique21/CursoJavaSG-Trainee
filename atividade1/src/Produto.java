@@ -1,5 +1,4 @@
 public class Produto {
-
     private String descricao;
     private int  estoque;
     private String nome;
@@ -9,6 +8,7 @@ public class Produto {
         this.estoque = estoque;
         this.nome = nome;
     }
+
 
     public String getDescricao() {
         return descricao;
@@ -33,7 +33,6 @@ public class Produto {
     public void setNome(String nome) {
         this.nome = nome;
     }
-
     @Override
     public String toString() {
         return "Produto {\n"
