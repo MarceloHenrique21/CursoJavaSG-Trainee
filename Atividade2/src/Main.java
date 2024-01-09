@@ -1,30 +1,17 @@
 import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
-        Scanner s = new Scanner(System.in);
 
-        System.out.println("digite um numero de 1 a 99: ");
-        int numero1 = s.nextInt();
+        int numApostado[] = new int[6];
 
+        for (int x = 0; x<=6; x++){
+            Scanner s = new Scanner(System.in);
 
-        System.out.println("digite um numero de 1 a 99: ");
-        int numero2 = s.nextInt();
+            System.out.println("digite um numero de 1 a 99: ");
+             numApostado[x] = s.nextInt();
+        }
 
-
-        System.out.println("digite um numero de 1 a 99: ");
-        int numero3 = s.nextInt();
-
-
-        System.out.println("digite um numero de 1 a 99: ");
-        int numero4 = s.nextInt();
-
-
-        System.out.println("digite um numero de 1 a 99: ");
-        int numero5 = s.nextInt();
-
-        System.out.println("digite um numero de 1 a 99: ");
-        int numero6 = s.nextInt();
-
+        
         double numA = Math.random() * 99;
 
         int N1 = (int) numA;

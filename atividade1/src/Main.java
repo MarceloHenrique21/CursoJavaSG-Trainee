@@ -18,12 +18,6 @@ public class Main {
             System.out.println("digite a quantidade em estoque: ");
             int estoque = s.nextInt();
 
-            /*
-            p[x].setNome(nome);
-            p[x].setDescricao(descricao);
-            p[x].setEstoque(estoque);
-            */
-
             Produto p = new Produto(nome, descricao, estoque);
             lista.add(p);
         }
@@ -31,18 +25,7 @@ public class Main {
         listaOrdenada.forEach((produto ->
                 System.out.println("produto: " + produto.getNome() + "| descrição: " + produto.getDescricao() + "|estoque: " + produto.getEstoque())
                 ));
+    }
+}
 //        Comparator<Produto> ProdutoEstoqueComparator = Comparator.comparingInt(Produto::getEstoque);
 //        Arrays.sort(lista, ProdutoEstoqueComparator);
-
-    }
-
-}
-
-
-/*
-
-        p[1] = new Produto("feijao", "feijao carioca", 4);
-        p[2] = new Produto("caixa de chocolate", "caixa de chocolate da garoto", 1);
-        p[3] = new Produto("coca cola", "refrigerante cola cola", 3);
-        p[4] = new Produto("oleo", "lata de oleo 2 litros", 1);
-    */
