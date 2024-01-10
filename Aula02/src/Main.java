@@ -29,6 +29,7 @@ public class Main {
                              "\n5 - adicionar estoque" +
                              "\n6 - retirar estoque" +
                              "\n7 - Buscar somente um produto por id"+
+                             "\n8 - sair"+
                              "\nDigite uma das opções: ");
                               opcao = s.nextInt();
 
@@ -64,7 +65,13 @@ public class Main {
                     System.out.println("Digite o id do produto: ");
                      id = s3.nextInt();
 
-                    // p.AtivarProdutos(id);
+                     lista.Localizar(id).ifPresentOrElse(
+                             produto ->{
+                                 produto.AtivarProdutos();
+                                 System.out.println("Produto ativado");
+                             },
+                             () ->  System.out.println("Produto nao localizado")
+                     );
                     break;
 
 
@@ -76,7 +83,13 @@ public class Main {
                      System.out.println("Digite o id do produto: ");
                      id = s4.nextInt();
 
-
+                     lista.Localizar(id).ifPresentOrElse(
+                             produto -> {
+                                 produto.InativarProdutos();
+                                 System.out.println("Produto inativado com sucesso!");
+                             },
+                             () ->  System.out.println("Produto nao localizado")
+                     );
                     break;
 
                  //adicionar estoque
@@ -111,12 +124,11 @@ public class Main {
                     System.out.println("Digite o id do produto: ");
                     id = s7.nextInt();
 
-                    lista.Localizar(id);
+                    lista.BuscarPorId(id);
                     break;
 
                  case 8:
                     break;
-
                }
          }
     }
