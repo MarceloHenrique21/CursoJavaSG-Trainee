@@ -102,8 +102,7 @@ public class Main {
                      System.out.println("Digite a quantidade de estoque que deseja remover: ");
                      int qtdeEstoqueRemover = s6.nextInt();
 
-
-
+                    lista.RemoverEstoque(id, qtdeEstoqueRemover);
                     break;
 
                 case 7:
