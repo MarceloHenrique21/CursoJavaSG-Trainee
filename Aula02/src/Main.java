@@ -14,12 +14,14 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner s = new Scanner(System.in);
-        ListaProdutos lista = new ListaProdutos();
 
-        int opcao = 0;
 
-         while (opcao != 8){
+        Integer opcao = 0;
+
+         while (opcao != 9){
+             Scanner s = new Scanner(System.in);
+
+
 
              System.out.println(
                      "\n1 - visualizar produtos" +
@@ -29,18 +31,20 @@ public class Main {
                              "\n5 - adicionar estoque" +
                              "\n6 - retirar estoque" +
                              "\n7 - Buscar somente um produto por id"+
-                             "\n8 - sair"+
+                             "\n8 - listar" +
+                             "\n9 - sair" +
                              "\nDigite uma das opções: ");
-                              opcao = s.nextInt();
+
+
+             opcao = Integer.parseInt(s.nextLine());
+             //ListaProdutos lista = new ListaProdutos();
 
             switch (opcao){
 
-                 // visualizar
                  case 1:
-                    lista.Apresentar();
+                    ListaProdutos.Apresentar();
                     break;
 
-                  //cadastrar
                   case 2:
                     Scanner s2 = new Scanner(System.in);
 
@@ -54,18 +58,16 @@ public class Main {
                     int id = s2.nextInt();
 
                     Produto p = new Produto(nome, qtdeEstoque, id);
-                    lista.AdicionarProduto(p);
+                    ListaProdutos.AdicionarProduto(p);
                     break;
 
-
-                  // ativar produto
                  case 3:
                     Scanner s3 = new Scanner(System.in);
 
                     System.out.println("Digite o id do produto: ");
                      id = s3.nextInt();
 
-                     lista.Localizar(id).ifPresentOrElse(
+                     ListaProdutos.Localizar(id).ifPresentOrElse(
                              produto ->{
                                  produto.AtivarProdutos();
                                  System.out.println("Produto ativado");
@@ -74,16 +76,13 @@ public class Main {
                      );
                     break;
 
-
-                 // inativar produto
                  case 4:
                      Scanner s4 = new Scanner(System.in);
-                     boolean inativo = false;
 
                      System.out.println("Digite o id do produto: ");
                      id = s4.nextInt();
 
-                     lista.Localizar(id).ifPresentOrElse(
+                     ListaProdutos.Localizar(id).ifPresentOrElse(
                              produto -> {
                                  produto.InativarProdutos();
                                  System.out.println("Produto inativado com sucesso!");
@@ -92,7 +91,6 @@ public class Main {
                      );
                     break;
 
-                 //adicionar estoque
                  case 5:
                      Scanner s5 = new Scanner(System.in);
 
@@ -102,10 +100,10 @@ public class Main {
                      System.out.println("Digite a quantidade de estoque que deseja adicionar: ");
                      int qtdeAdd = s5.nextInt();
 
-                    lista.AdicionarEstoque(id, qtdeAdd);
+                     ListaProdutos.AdicionarEstoque(id, qtdeAdd);
                     break;
 
-                 // retirar estoque
+
                  case 6:
                      Scanner s6 = new Scanner(System.in);
 
@@ -115,7 +113,7 @@ public class Main {
                      System.out.println("Digite a quantidade de estoque que deseja remover: ");
                      int qtdeEstoqueRemover = s6.nextInt();
 
-                    lista.RemoverEstoque(id, qtdeEstoqueRemover);
+                     ListaProdutos.RemoverEstoque(id, qtdeEstoqueRemover);
                     break;
 
                 case 7:
@@ -124,10 +122,17 @@ public class Main {
                     System.out.println("Digite o id do produto: ");
                     id = s7.nextInt();
 
-                    lista.BuscarPorId(id);
+                    ListaProdutos.BuscarPorId(id);
                     break;
 
                  case 8:
+                     Scanner s8 = new Scanner(System.in);
+
+                     SubMenu.MenuListagem();
+//                        MenuListagem(lista);
+                    break;
+
+                case 9:
                     break;
                }
          }

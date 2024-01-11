@@ -9,7 +9,6 @@ public class Produto implements InterfaceDeProduto{
         this.estoque = estoque;
         this.id = id;
         this.situacao = situacao.ATIVO;
-
     }
 
     public int getId() {
@@ -34,23 +33,20 @@ public class Produto implements InterfaceDeProduto{
     public void setSituacao(SituacaoProduto situacao) {this.situacao = situacao;}
 
     public void AtivarProdutos() {this.situacao = SituacaoProduto.ATIVO;}
-
     public void InativarProdutos() {this.situacao = SituacaoProduto.Inativo;}
-
     public void AdicionarEstoque(int qtdeEstoqueAdd) {
         this.estoque = estoque + qtdeEstoqueAdd;
     }
-
     public void RetirarEstoque(int qtdeEstoqueRemover) {
         this.estoque = estoque - qtdeEstoqueRemover;
     }
 
     @Override
     public String toString() {
-        return "\nnome: " + nome + '\'' +
-                "\nid: "+id+
+        return "\nnome: " + nome +
+                "\nid: "+ id +
                 "\nqtde em estoque: " + estoque +
-                "\nsituação do produto: "+situacao+
+                "\nsituação do produto: " + situacao +
                 "\n\n";
     }
 }
