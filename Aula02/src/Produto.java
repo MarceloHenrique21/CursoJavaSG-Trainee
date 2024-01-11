@@ -4,13 +4,14 @@ public class Produto implements InterfaceDeProduto{
     private int estoque;
     private SituacaoProduto situacao;
 
-    public Produto(String nome, int estoque, int id) {
+    public Produto(String nome, int estoque) {
         this.nome = nome;
         this.estoque = estoque;
         this.id = id;
         this.situacao = situacao.ATIVO;
     }
 
+    public boolean isAtivo() {return situacao == SituacaoProduto.ATIVO;}
     public int getId() {
         return id;
     }
@@ -20,9 +21,7 @@ public class Produto implements InterfaceDeProduto{
     public String getNome() {
         return nome;
     }
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+    public void setNome(String nome) {this.nome = nome;}
     public int getEstoque() {
         return estoque;
     }

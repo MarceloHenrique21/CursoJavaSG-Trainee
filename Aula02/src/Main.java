@@ -1,140 +1,152 @@
-/*
-
-* visualiar produtos
-* cadastrar produtos
-* ativar/inativar produtos
-* adicionar estoque
-* retirar estoque
-
-*/
-
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        ListaProdutos lista = new ListaProdutos();
+        Scanner scanner = new Scanner(System.in);
+        int opcao = 0;
 
+        while (opcao != 9) {
+            exibirMenu();
+            opcao = Integer.parseInt(scanner.nextLine());
 
-        Integer opcao = 0;
-
-         while (opcao != 9){
-             Scanner s = new Scanner(System.in);
-
-
-
-             System.out.println(
-                     "\n1 - visualizar produtos" +
-                             "\n2 - Cadastrar produto" +
-                             "\n3 - ativar produto" +
-                             "\n4 - inativar produto" +
-                             "\n5 - adicionar estoque" +
-                             "\n6 - retirar estoque" +
-                             "\n7 - Buscar somente um produto por id"+
-                             "\n8 - listar" +
-                             "\n9 - sair" +
-                             "\nDigite uma das opções: ");
-
-
-             opcao = Integer.parseInt(s.nextLine());
-             //ListaProdutos lista = new ListaProdutos();
-
-            switch (opcao){
-
-                 case 1:
+            switch (opcao) {
+                case 1:
                     ListaProdutos.Apresentar();
                     break;
 
-                  case 2:
-                    Scanner s2 = new Scanner(System.in);
-
-                    System.out.println("Digite o nome do seu produto: ");
-                    String nome = s2.nextLine();
-
-                    System.out.println("Digite a quantidade em estoque: ");
-                    int qtdeEstoque = s2.nextInt();
-
-                    System.out.println("Digite o id do produto: ");
-                    int id = s2.nextInt();
-
-                    Produto p = new Produto(nome, qtdeEstoque, id);
-                    ListaProdutos.AdicionarProduto(p);
+                case 2:
+                    cadastrarProduto(scanner, lista);
                     break;
 
-                 case 3:
-                    Scanner s3 = new Scanner(System.in);
-
-                    System.out.println("Digite o id do produto: ");
-                     id = s3.nextInt();
-
-                     ListaProdutos.Localizar(id).ifPresentOrElse(
-                             produto ->{
-                                 produto.AtivarProdutos();
-                                 System.out.println("Produto ativado");
-                             },
-                             () ->  System.out.println("Produto nao localizado")
-                     );
+                case 3:
+                    ativarProduto(scanner, lista);
                     break;
 
-                 case 4:
-                     Scanner s4 = new Scanner(System.in);
-
-                     System.out.println("Digite o id do produto: ");
-                     id = s4.nextInt();
-
-                     ListaProdutos.Localizar(id).ifPresentOrElse(
-                             produto -> {
-                                 produto.InativarProdutos();
-                                 System.out.println("Produto inativado com sucesso!");
-                             },
-                             () ->  System.out.println("Produto nao localizado")
-                     );
+                case 4:
+                    inativarProduto(scanner, lista);
                     break;
 
-                 case 5:
-                     Scanner s5 = new Scanner(System.in);
-
-                     System.out.println("Digite o id do produto: ");
-                     id = s5.nextInt();
-
-                     System.out.println("Digite a quantidade de estoque que deseja adicionar: ");
-                     int qtdeAdd = s5.nextInt();
-
-                     ListaProdutos.AdicionarEstoque(id, qtdeAdd);
+                case 5:
+                    adicionarEstoque(scanner, lista);
                     break;
 
-
-                 case 6:
-                     Scanner s6 = new Scanner(System.in);
-
-                     System.out.println("Digite o id do produto: ");
-                     id = s6.nextInt();
-
-                     System.out.println("Digite a quantidade de estoque que deseja remover: ");
-                     int qtdeEstoqueRemover = s6.nextInt();
-
-                     ListaProdutos.RemoverEstoque(id, qtdeEstoqueRemover);
+                case 6:
+                    removerEstoque(scanner, lista);
                     break;
 
                 case 7:
-
-                    Scanner s7 = new Scanner(System.in);
-                    System.out.println("Digite o id do produto: ");
-                    id = s7.nextInt();
-
-                    ListaProdutos.BuscarPorId(id);
+                    buscarPorId(scanner, lista);
                     break;
 
-                 case 8:
-                     Scanner s8 = new Scanner(System.in);
-
-                     SubMenu.MenuListagem();
-//                        MenuListagem(lista);
+                case 8:
+                    SubMenu.MenuListagem(lista);
                     break;
 
                 case 9:
                     break;
-               }
-         }
+
+                case 10:
+                    deletarProduto(scanner, lista);
+                    break;
+
+                default:
+                    System.out.println("Opção inválida. Tente novamente.");
+                    break;
+            }
+        }
+    }
+
+    private static void exibirMenu() {
+        System.out.print(
+                        "\n1  - Visualizar todos os produtos" +
+                        "\n2  - Cadastrar um produto" +
+                        "\n3  - Ativar um produto" +
+                        "\n4  - Inativar um produto" +
+                        "\n5  - Adicionar estoque a um produto" +
+                        "\n6  - Retirar estoque de um produto" +
+                        "\n7  - Buscar um produto" +
+                        "\n8  - opcoes para listar os produtos" +
+                        "\n10 - deletar um produto" +
+                        "\n9  - sair" +
+                        "\nDigite uma das opções: ");
+    }
+
+    private static void cadastrarProduto(Scanner scanner, ListaProdutos lista) {
+        System.out.println("Digite o nome do produto: ");
+        String nomeProduto = scanner.nextLine();
+
+        System.out.println("Digite a quantidade em estoque: ");
+        int quantidadeEstoque = Integer.parseInt(scanner.nextLine());
+
+        Produto produto = new Produto(nomeProduto, quantidadeEstoque);
+        ListaProdutos.AdicionarProduto(produto);
+    }
+
+    private static void ativarProduto(Scanner scanner, ListaProdutos lista) {
+        System.out.println("Digite o ID do produto: ");
+        int idAtivar = Integer.parseInt(scanner.nextLine());
+
+        ListaProdutos.Localizar(idAtivar).ifPresentOrElse(
+                produto -> {
+                    produto.AtivarProdutos();
+                    System.out.println("Produto ativado");
+                },
+                () -> System.out.println("Produto não localizado")
+        );
+    }
+
+    private static void inativarProduto(Scanner scanner, ListaProdutos lista) {
+        System.out.println("Digite o ID do produto: ");
+        int idInativar = Integer.parseInt(scanner.nextLine());
+
+        ListaProdutos.Localizar(idInativar).ifPresentOrElse(
+                produto -> {
+                    produto.InativarProdutos();
+                    System.out.println("Produto inativado com sucesso!");
+                },
+                () -> System.out.println("Produto não localizado")
+        );
+    }
+
+    private static void adicionarEstoque(Scanner scanner, ListaProdutos lista) {
+        System.out.println("Digite o ID do produto: ");
+        int idAdicionarEstoque = Integer.parseInt(scanner.nextLine());
+
+        System.out.println("Digite a quantidade de estoque que deseja adicionar: ");
+        int qtdeAdicionarEstoque = Integer.parseInt(scanner.nextLine());
+
+        ListaProdutos.AdicionarEstoque(idAdicionarEstoque, qtdeAdicionarEstoque);
+    }
+
+    private static void removerEstoque(Scanner scanner, ListaProdutos lista) {
+        System.out.println("Digite o ID do produto: ");
+        int idRemoverEstoque = Integer.parseInt(scanner.nextLine());
+
+        System.out.println("Digite a quantidade de estoque que deseja remover: ");
+        int qtdeRemoverEstoque = Integer.parseInt(scanner.nextLine());
+
+        ListaProdutos.RemoverEstoque(idRemoverEstoque, qtdeRemoverEstoque);
+    }
+
+    private static void buscarPorId(Scanner scanner, ListaProdutos lista) {
+        System.out.println("Digite o ID do produto: ");
+        int idBuscar = Integer.parseInt(scanner.nextLine());
+
+        ListaProdutos.BuscarPorId(idBuscar);
+    }
+
+    private static void deletarProduto(Scanner scanner, ListaProdutos lista) {
+        System.out.println("Digite o ID do produto que deseja excluir: ");
+        int idDeletar = Integer.parseInt(scanner.nextLine());
+
+        boolean sucesso = lista.DeletarProduto(idDeletar);
+
+        if (sucesso) {
+            System.out.println("Produto excluído com sucesso!");
+        } else {
+            System.out.println("Produto não localizado. Exclusão não realizada.");
+        }
     }
 }
+
