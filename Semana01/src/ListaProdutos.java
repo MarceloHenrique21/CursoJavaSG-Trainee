@@ -53,32 +53,32 @@ public class ListaProdutos {
             p.get().RetirarEstoque(qtdeRem);
         }
     }
-        public static void OrdenarPorNome() {
-            Collections.sort(listaProdutos, Comparator.comparing(Produto::getNome));
-            System.out.println(listaProdutos);
-        }
+    public static void OrdenarPorNome() {
+        Collections.sort(listaProdutos, Comparator.comparing(Produto::getNome));
+        System.out.println(listaProdutos);
+    }
 
-        public static void OrdenarPorIdCrescente() {
-            Collections.sort(listaProdutos, Comparator.comparingInt(Produto::getId));
-            System.out.println(listaProdutos);
-        }
+    public static void OrdenarPorIdCrescente() {
+        Collections.sort(listaProdutos, Comparator.comparingInt(Produto::getId));
+        System.out.println(listaProdutos);
+    }
 
-        public static void OrdenarPorQuantidadeEstoqueMaior() {
+    public static void OrdenarPorQuantidadeEstoqueMaior() {
         Collections.sort(listaProdutos, Comparator.comparingInt(Produto::getEstoque).reversed());
         System.out.println(listaProdutos);
-        }
+    }
 
-        public static void OrdenarPorQuantidadeEstoqueMenor() {
-            Collections.sort(listaProdutos, Comparator.comparingInt(Produto::getEstoque));
-            System.out.println(listaProdutos);
-        }
+    public static void OrdenarPorQuantidadeEstoqueMenor() {
+         Collections.sort(listaProdutos, Comparator.comparingInt(Produto::getEstoque));
+         System.out.println(listaProdutos);
+    }
 
-        public static void FiltrarAtivos() {
-            List<Produto> produtosAtivos = listaProdutos.stream()
-                    .filter(Produto::isAtivo)
-                    .collect(Collectors.toList());
-            System.out.println(produtosAtivos);
-        }
+    public static void FiltrarAtivos() {
+        List<Produto> produtosAtivos = listaProdutos.stream()
+          .filter(Produto::isAtivo)
+          .collect(Collectors.toList());
+        System.out.println(produtosAtivos);
+    }
 
     public static void FiltrarInativos() {
         List<Produto> produtosInativos = listaProdutos.stream()
@@ -93,18 +93,19 @@ public class ListaProdutos {
     }
 
     public static void FiltrarComEstoque() {
-            List<Produto> produtosComEstoque = listaProdutos.stream()
-                    .filter(produto -> produto.getEstoque() > 0)
-                    .collect(Collectors.toList());
-            System.out.println(produtosComEstoque);
-        }
+        List<Produto> produtosComEstoque = listaProdutos.stream()
+                .filter(produto -> produto.getEstoque() > 0)
+                .collect(Collectors.toList());
+        System.out.println(produtosComEstoque);
+    }
 
-        public static void FiltrarSemEstoque() {
-            List<Produto> produtosSemEstoque = listaProdutos.stream()
-                    .filter(produto -> produto.getEstoque() == 0)
-                    .collect(Collectors.toList());
-            System.out.println(produtosSemEstoque);
-        }
+    public static void FiltrarSemEstoque() {
+        List<Produto> produtosSemEstoque = listaProdutos.stream()
+                .filter(produto -> produto.getEstoque() == 0)
+                .collect(Collectors.toList());
+        System.out.println(produtosSemEstoque);
+    }
+
     public static boolean DeletarProduto(int id) {
         Optional<Produto> produtoOptional = Localizar(id);
 
@@ -115,5 +116,4 @@ public class ListaProdutos {
             return false;
         }
     }
-
 }

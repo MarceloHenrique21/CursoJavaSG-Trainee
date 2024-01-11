@@ -76,9 +76,5 @@ public class Main {
         }else if(acertos == 6){
             System.out.println("voce acertou uma quina, parabens!");
         }
-
-
-
-
     }
 }

@@ -23,7 +23,6 @@ public class SubMenu {
             opcao = s.nextInt();
 
             switch (opcao) {
-
                 case 1:
                     lista.OrdenarPorIdCrescente();
                     break;
