@@ -1,3 +1,4 @@
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -81,9 +82,10 @@ public class Main {
         System.out.println("Digite a quantidade em estoque: ");
         int quantidadeEstoque = Integer.parseInt(scanner.nextLine());
 
+        System.out.println("Digite o preço do produto: ");
+        BigDecimal preco =  scanner.nextBigDecimal();
 
-
-        Produto produto = new Produto(nomeProduto, quantidadeEstoque);
+        Produto produto = new Produto(nomeProduto, quantidadeEstoque, preco);
         ListaProdutos.AdicionarProduto(produto);
     }
 

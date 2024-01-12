@@ -1,4 +1,5 @@
 import javax.xml.crypto.Data;
+import java.math.BigDecimal;
 import java.text.DateFormat;
 import java.util.Date;
 
@@ -8,14 +9,20 @@ public class Produto{
     private int estoque;
     private SituacaoProduto situacao;
     private Date data;
+    private BigDecimal preco;
 
-    public Produto(String nome, int estoque) {
+    public Produto(String nome, int estoque, BigDecimal preco) {
         this.nome = nome;
         this.estoque = estoque;
         this.id = id;
         this.situacao = situacao.ATIVO;
         this.data = new Date();
+        this.preco = preco;
     }
+
+    public BigDecimal getPreco() {return preco;}
+
+    public void setPreco(BigDecimal preco) {this.preco = preco;}
 
     public Date getData() {return data;}
 
@@ -55,8 +62,9 @@ public class Produto{
         return "\nnome: " + nome +
                 "\nid: "+ id +
                 "\nqtde em estoque: " + estoque +
+                "\nPreço" +
                 "\nsituação do produto: " + situacao +
-                "\ndata de cadastro: "+data+
+                "\ndata de cadastro: "+ data +
                 "\n\n";
     }
 }
