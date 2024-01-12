@@ -28,7 +28,8 @@ public class Produto{
 
     public void setData(Date data) {this.data = data;}
 
-    public boolean isAtivo() {return situacao == SituacaoProduto.ATIVO;}
+    public boolean isAtivo() {
+        return situacao == SituacaoProduto.ATIVO;}
     public int getId() {
         return id;
     }
