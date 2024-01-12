@@ -1,12 +1,13 @@
+import java.util.Date;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         ListaProdutos lista = new ListaProdutos();
         Scanner scanner = new Scanner(System.in);
-        int opcao = 0;
+        int opcao = 100;
 
-        while (opcao != 9) {
+        while (opcao != 0) {
             exibirMenu();
             opcao = Integer.parseInt(scanner.nextLine());
 
@@ -44,10 +45,10 @@ public class Main {
                     break;
 
                 case 9:
+                    deletarProduto(scanner, lista);
                     break;
 
-                case 10:
-                    deletarProduto(scanner, lista);
+                case 0:
                     break;
 
                 default:
@@ -67,17 +68,20 @@ public class Main {
                         "\n6  - Retirar estoque de um produto" +
                         "\n7  - Buscar um produto" +
                         "\n8  - opcoes para listar os produtos" +
-                        "\n10 - deletar um produto" +
-                        "\n9  - sair" +
+                        "\n9 - deletar um produto" +
+                        "\n0  - sair" +
                         "\nDigite uma das opções: ");
     }
 
     private static void cadastrarProduto(Scanner scanner, ListaProdutos lista) {
+
         System.out.println("Digite o nome do produto: ");
         String nomeProduto = scanner.nextLine();
 
         System.out.println("Digite a quantidade em estoque: ");
         int quantidadeEstoque = Integer.parseInt(scanner.nextLine());
+
+
 
         Produto produto = new Produto(nomeProduto, quantidadeEstoque);
         ListaProdutos.AdicionarProduto(produto);

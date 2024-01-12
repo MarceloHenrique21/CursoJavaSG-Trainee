@@ -1,4 +1,3 @@
-
     public enum SituacaoProduto{
         ATIVO("Ativo"),
         Inativo("Inativo");

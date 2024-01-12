@@ -63,6 +63,15 @@ public class ListaProdutos {
         System.out.println(listaProdutos);
     }
 
+    public static void OrdenarDataCrescente(){
+        Collections.sort(listaProdutos, Comparator.comparing(Produto::getData));
+        System.out.println(listaProdutos);
+    }
+
+    public static void OrdenarDataDecrescente(){
+        Collections.sort(listaProdutos, Comparator.comparing(Produto::getData).reversed());
+        System.out.println(listaProdutos);
+    }
     public static void OrdenarPorQuantidadeEstoqueMaior() {
         Collections.sort(listaProdutos, Comparator.comparingInt(Produto::getEstoque).reversed());
         System.out.println(listaProdutos);

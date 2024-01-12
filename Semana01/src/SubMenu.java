@@ -4,9 +4,9 @@ public class SubMenu {
     public static void MenuListagem(ListaProdutos lista) {
         Scanner s = new Scanner(System.in);
 
-        int opcao = 0;
+        int opcao = 100;
 
-        while (opcao != 10) {
+        while (opcao != 0) {
 
             System.out.println(
                     "\n1 - Ordem crescente de código" +
@@ -18,7 +18,9 @@ public class SubMenu {
                             "\n7 - Somente com estoque" +
                             "\n8 - Somente sem estoque" +
                             "\n9 - Filtrando por nome" +
-                            "\n10 - voltar" +
+                            "\n10 - Filtrar por data em ordem crecente" +
+                            "\n11 - Filtrar por data em ordem Decrescente" +
+                            "\n0 - voltar" +
                             "\nDigite uma das opções: ");
             opcao = s.nextInt();
 
@@ -64,6 +66,18 @@ public class SubMenu {
                     break;
 
                 case 10:
+                    lista.OrdenarDataCrescente();
+                    break;
+
+                case 11:
+                    lista.OrdenarDataDecrescente();
+                    break;
+
+                case 0:
+                    break;
+
+                default:
+                    System.out.println("Opção inválida. Tente novamente.");
                     break;
             }
         }

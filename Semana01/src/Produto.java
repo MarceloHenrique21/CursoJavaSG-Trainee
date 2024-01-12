@@ -1,15 +1,25 @@
-public class Produto implements InterfaceDeProduto{
+import javax.xml.crypto.Data;
+import java.text.DateFormat;
+import java.util.Date;
+
+public class Produto{
     private int id;
     private String nome;
     private int estoque;
     private SituacaoProduto situacao;
+    private Date data;
 
     public Produto(String nome, int estoque) {
         this.nome = nome;
         this.estoque = estoque;
         this.id = id;
         this.situacao = situacao.ATIVO;
+        this.data = new Date();
     }
+
+    public Date getData() {return data;}
+
+    public void setData(Date data) {this.data = data;}
 
     public boolean isAtivo() {return situacao == SituacaoProduto.ATIVO;}
     public int getId() {
@@ -46,6 +56,7 @@ public class Produto implements InterfaceDeProduto{
                 "\nid: "+ id +
                 "\nqtde em estoque: " + estoque +
                 "\nsituação do produto: " + situacao +
+                "\ndata de cadastro: "+data+
                 "\n\n";
     }
 }
