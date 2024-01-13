@@ -2,8 +2,9 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class ListaLivros {
-    static List<Livro> listaLivros = new ArrayList<>();
+    private static List<Livro> listaLivros = new ArrayList<>();
     private static int proximoCod = 1;
+    private static int alugado = 0;
 
     public static List<Livro> LocalizarNome(String nome) {
         return listaLivros.stream()
@@ -30,38 +31,50 @@ public class ListaLivros {
     public static void ApresentarLivrosPorNome(String nome){
         List<Livro> l = LocalizarNome(nome);
         System.out.println(l);
+
     }
 
-    public static void alugarLivro(){
-        List<Livro> livrosAtivos = listaLivros.stream()
-                .filter(Livro::isAtivo)
-                .collect(Collectors.toList());
+    public static void alugarLivro(int id){
+        Optional<Livro> l = LocalizarId(id);
 
-        if (livrosAtivos.isEmpty()) {
-            System.out.println("Esse livro não esta ativo");
+        if (l.isEmpty()) {
+            System.out.println("esse livro nao foi encontrado");
         } else {
-                livrosAtivos.stream().filter(livro -> livro.getQtdeAlugada() == livro.getQtdeAlugada()+1);
-                livrosAtivos.stream().filter(livro -> livro.getQtdeDisponivel() == livro.getQtdeDisponivel()-1);
+            List<Livro> livrosAtivos = listaLivros.stream()
+                    .filter(Livro::isAtivo)
+                    .collect(Collectors.toList());
+
+            if (livrosAtivos.isEmpty()) {
+                System.out.println("Esse livro não esta ativo");
+            } else {
+                alugado++;
+              // ??  listaLivros.stream().filter(livro -> livro.setQtdeAlugada(alugado));
                 System.out.println("Livro alugado");
+            }
         }
     }
 
-    public static void devolverLivro(){
-       List<Livro> livrosAtivos = listaLivros.stream()
-                .filter(Livro::isAtivo)
-                .collect(Collectors.toList());
+    public static void devolverLivro(int id){
+        Optional<Livro> l = LocalizarId(id);
 
-        if (livrosAtivos.isEmpty()) {
-            System.out.println("esse livro não foi alugado ou esta inativo");
+        if (l.isEmpty()) {
+            System.out.println("esse livro nao foi encontrado");
         } else {
-            livrosAtivos.stream().filter(livro -> livro.getQtdeDisponivel() == livro.getQtdeDisponivel() + 1);
-            livrosAtivos.stream().filter(livro -> livro.getQtdeAlugada() == livro.getQtdeAlugada() - 1);
-            System.out.println("Livro devolvido");
+            List<Livro> livrosAtivos = listaLivros.stream()
+                    .filter(Livro::isAtivo)
+                    .collect(Collectors.toList());
+
+            if (livrosAtivos.isEmpty()) {
+                System.out.println("Esse livro não esta ativo");
+            } else {
+                alugado++;
+                System.out.println("devolvido");
+            }
         }
 
     }
 
-    public static void removerLivro(int id){
+    public static boolean removerLivro(int id){
     Optional<Livro> livroOptional = LocalizarId(id);
 
         if(livroOptional.isPresent()){
@@ -72,5 +85,4 @@ public class ListaLivros {
             return false;
             }
     }
-
 }

@@ -16,7 +16,7 @@ public class Livro {
         this.data = new Date();
         this.qtdeTotal = qtdeTotal;
         this.qtdeDisponivel = qtdeTotal;
-        this.qtdeAlugada = qtdeAlugada;
+        this.qtdeAlugada = 0;
         this.situacao = SituacaoLivro.ATIVO;
         this.situacaoDoAluguel = SituacaoAluguel.NaoAlugado;
     }
@@ -25,6 +25,8 @@ public class Livro {
         return codigo;
     }
 
+    public void AtivarLivro() {this.situacao = SituacaoLivro.ATIVO;}
+    public void InativarLivro() {this.situacao = SituacaoLivro.Inativo;}
     public boolean isAtivo() {return situacao == SituacaoLivro.ATIVO;}
 
     public void setCodigo(int codigo) {
@@ -76,6 +78,7 @@ public class Livro {
         return  "\ncodigo: " + codigo +
                 "\nnome: " + nome + '\'' +
                 "\nSituacao: " + situacao +
+                "\nsituação do aluguel: " + situacaoDoAluguel +
                 "\ndata de cadastro: " + data +
                 "\nquantidade total: " + qtdeTotal +
                 "\nquantidade disponivel: " + qtdeDisponivel +
