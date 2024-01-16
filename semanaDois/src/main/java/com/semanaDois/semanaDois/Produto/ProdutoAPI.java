@@ -1,4 +1,4 @@
-package Produto;
+package com.semanaDois.semanaDois.Produto;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
