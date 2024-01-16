@@ -1,15 +1,23 @@
 package com.semanaDois.semanaDois.Produto;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 @RestController
 @RequestMapping("/produto")
 public class ProdutoAPI {
 
-    @GetMapping("/teste")
-    public ResponseEntity<String> teste(){
-        return ResponseEntity.ok("teste");
+    private final ProdutoService produtoService;
+
+    @Autowired
+    public ProdutoAPI (ProdutoService produtoService){
+        this.produtoService = produtoService;
     }
+
+    @PostMapping("/Cadastrar")
+    public ResponseEntity<Produto> Cadastrar(@RequestBody Produto produto){
+        return ResponseEntity.ok(this.produtoService.Cadastrar(produto));
+    }
+
 }
