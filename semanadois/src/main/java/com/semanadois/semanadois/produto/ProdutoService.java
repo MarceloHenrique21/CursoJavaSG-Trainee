@@ -1,6 +1,5 @@
-// ProdutoService.java
 
-package com.semanadois.semanadois.produto;
+package com.semanaDois.semanaDois.Produto;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,22 +10,22 @@ import java.util.List;
 @Service
 public class ProdutoService {
 
-    private final ProdutoRepository produtoRepository;
+    private final com.semanaDois.semanaDois.Produto.ProdutoRepository produtoRepository;
 
     // Injeção de dependência do ProdutoRepository no construtor da ProdutoService
     @Autowired
-    public ProdutoService(ProdutoRepository produtoRepository) {
+    public ProdutoService(com.semanaDois.semanaDois.Produto.ProdutoRepository produtoRepository) {
         this.produtoRepository = produtoRepository;
     }
 
     // Método transacional para cadastrar um novo produto
     @Transactional
-    public Produto cadastrar(Produto produto) {
+    public com.semanaDois.semanaDois.Produto.Produto cadastrar(com.semanaDois.semanaDois.Produto.Produto produto) {
         return this.produtoRepository.save(produto);
     }
 
     // Método para obter um produto pelo ID
-    public Produto pegarPorId(Integer id) {
+    public com.semanaDois.semanaDois.Produto.Produto pegarPorId(Integer id) {
         return this.produtoRepository.findById(id).orElse(null);
     }
 
@@ -38,7 +37,7 @@ public class ProdutoService {
 
     // Método transacional somente leitura para buscar produtos por nome
     @Transactional(readOnly = true)
-    public List<Produto> findByNome(String nome) {
+    public List<com.semanaDois.semanaDois.Produto.Produto> findByNome(String nome) {
         return this.produtoRepository.findAllByNome("%" + nome + "%");
     }
 }

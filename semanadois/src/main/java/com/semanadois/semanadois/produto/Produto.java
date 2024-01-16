@@ -1,4 +1,4 @@
-package com.semanadois.semanadois.produto;
+package com.semanaDois.semanaDois.Produto;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

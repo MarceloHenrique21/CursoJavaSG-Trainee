@@ -1,6 +1,5 @@
-// ProdutoAPI.java
 
-package com.semanadois.semanadois.produto;
+package com.semanaDois.semanaDois.Produto;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -12,29 +11,29 @@ import java.util.List;
 @RequestMapping("/produto")
 public class ProdutoAPI {
 
-    private final ProdutoService produtoService;
+    private final com.semanaDois.semanaDois.Produto.ProdutoService produtoService;
 
     // Injeção de dependência do ProdutoService no construtor da ProdutoAPI
     @Autowired
-    public ProdutoAPI(ProdutoService produtoService) {
+    public ProdutoAPI(com.semanaDois.semanaDois.Produto.ProdutoService produtoService) {
         this.produtoService = produtoService;
     }
 
     // Endpoint para cadastrar um novo produto
     @PostMapping("")
-    public ResponseEntity<Produto> cadastrar(@RequestBody Produto produto) {
+    public ResponseEntity<com.semanaDois.semanaDois.Produto.Produto> cadastrar(@RequestBody com.semanaDois.semanaDois.Produto.Produto produto) {
         return ResponseEntity.ok(this.produtoService.cadastrar(produto));
     }
 
     // Endpoint para atualizar um produto existente com base no ID
     @PutMapping("/{id}")
-    public ResponseEntity<Produto> atualizar(@RequestBody Produto produto) {
+    public ResponseEntity<com.semanaDois.semanaDois.Produto.Produto> atualizar(@RequestBody com.semanaDois.semanaDois.Produto.Produto produto) {
         return ResponseEntity.ok(this.produtoService.cadastrar(produto));
     }
 
     // Endpoint para obter um produto pelo ID
     @GetMapping("/{id}")
-    public ResponseEntity<Produto> pegarPorId(@PathVariable Integer id) {
+    public ResponseEntity<com.semanaDois.semanaDois.Produto.Produto> pegarPorId(@PathVariable Integer id) {
         return ResponseEntity.ok(this.produtoService.pegarPorId(id));
     }
 
@@ -47,7 +46,7 @@ public class ProdutoAPI {
 
     // Endpoint para buscar produtos por nome usando um parâmetro de consulta
     @GetMapping("/por-nome")
-    public ResponseEntity<List<Produto>> findByNome(@RequestParam(name = "nome") String nome) {
+    public ResponseEntity<List<com.semanaDois.semanaDois.Produto.Produto>> findByNome(@RequestParam(name = "nome") String nome) {
         return ResponseEntity.ok(this.produtoService.findByNome(nome));
     }
 }
