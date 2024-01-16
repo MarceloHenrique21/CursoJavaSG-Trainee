@@ -1,3 +1,5 @@
+// ProdutoRepository.java
+
 package com.semanadois.semanadois.produto;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -10,7 +12,8 @@ import java.util.List;
 @Repository
 public interface ProdutoRepository extends JpaRepository<Produto, Integer> {
 
+    // Consulta personalizada para encontrar produtos por nome (ignorando maiúsculas/minúsculas)
     @Query(nativeQuery = true,
-        value = "SELECT * FROM produto WHERE nome ILIKE :nome")
+            value = "SELECT * FROM produto WHERE nome ILIKE :nome")
     List<Produto> findAllByNome(@Param("nome") String nome);
 }
