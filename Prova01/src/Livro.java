@@ -73,6 +73,10 @@ public class Livro {
         this.qtdeAlugada = qtdeAlugada;
     }
 
+    public SituacaoAluguel getSituacaoDoAluguel() {return situacaoDoAluguel; }
+
+    public void setSituacaoDoAluguel(SituacaoAluguel situacaoDoAluguel) {this.situacaoDoAluguel = situacaoDoAluguel; }
+
     @Override
     public String toString() {
         return  "\ncodigo: " + codigo +

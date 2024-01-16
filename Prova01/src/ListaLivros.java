@@ -34,55 +34,62 @@ public class ListaLivros {
 
     }
 
-    public static void alugarLivro(int id){
-        Optional<Livro> l = LocalizarId(id);
 
-        if (l.isEmpty()) {
-            System.out.println("esse livro nao foi encontrado");
-        } else {
-            List<Livro> livrosAtivos = listaLivros.stream()
-                    .filter(Livro::isAtivo)
-                    .collect(Collectors.toList());
+    public static void alugarLivro(int id) {
+        Optional<Livro> livroOptional = LocalizarId(id);
 
-            if (livrosAtivos.isEmpty()) {
-                System.out.println("Esse livro não esta ativo");
+        if (livroOptional.isPresent()) {
+            Livro livro = livroOptional.get();
+
+            if (livro.isAtivo() && livro.getQtdeDisponivel() > 0) {
+                livro.setQtdeDisponivel(livro.getQtdeDisponivel() - 1);
+                livro.setQtdeAlugada(livro.getQtdeAlugada() + 1);
+                livro.setSituacaoDoAluguel(SituacaoAluguel.Alugado);
+                System.out.println("Livro alugado com sucesso!");
             } else {
-                alugado++;
-              // ??  listaLivros.stream().filter(livro -> livro.setQtdeAlugada(alugado));
-                System.out.println("Livro alugado");
+                System.out.println("Livro não disponível para aluguel.");
             }
+        } else {
+            System.out.println("Livro não encontrado.");
         }
     }
 
-    public static void devolverLivro(int id){
-        Optional<Livro> l = LocalizarId(id);
+    public static void devolverLivro(int id) {
+        Optional<Livro> livroOptional = LocalizarId(id);
 
-        if (l.isEmpty()) {
-            System.out.println("esse livro nao foi encontrado");
-        } else {
-            List<Livro> livrosAtivos = listaLivros.stream()
-                    .filter(Livro::isAtivo)
-                    .collect(Collectors.toList());
+        if (livroOptional.isPresent()) {
+            Livro livro = livroOptional.get();
 
-            if (livrosAtivos.isEmpty()) {
-                System.out.println("Esse livro não esta ativo");
+            if (livro.isAtivo() && livro.getSituacaoDoAluguel() == SituacaoAluguel.Alugado) {
+                livro.setQtdeDisponivel(livro.getQtdeDisponivel() + 1);
+                livro.setQtdeAlugada(livro.getQtdeAlugada() - 1);
+                livro.setSituacaoDoAluguel(SituacaoAluguel.NaoAlugado);
+                System.out.println("Livro devolvido com sucesso!");
             } else {
-                alugado++;
-                System.out.println("devolvido");
+                System.out.println("Livro não está alugado ou não está ativo.");
             }
+        } else {
+            System.out.println("Livro não encontrado.");
         }
-
     }
 
-    public static boolean removerLivro(int id){
-    Optional<Livro> livroOptional = LocalizarId(id);
 
-        if(livroOptional.isPresent()){
-            listaLivros.remove(livroOptional.get());
-            return true;
-        }
-            else {
+    public static boolean removerLivro(int id) {
+        Optional<Livro> livroOptional = LocalizarId(id);
+
+        if (livroOptional.isPresent()) {
+            Livro livro = livroOptional.get();
+
+            if (livro.getSituacaoDoAluguel() == SituacaoAluguel.NaoAlugado) {
+                listaLivros.remove(livro);
+                return true;
+            } else {
+                System.out.println("Não é possível excluir um livro que está sendo alugado.");
+                return false;
+            }
+        } else {
+            System.out.println("Livro não encontrado.");
             return false;
-            }
+        }
     }
 }

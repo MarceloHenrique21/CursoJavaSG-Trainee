@@ -1,0 +1,16 @@
+Cadastro de Produto (POST /produto):
+http://localhost:8080/produto.
+No corpo da requisição (Body), selecione o tipo JSON e insira os dados do produto que deseja cadastrar.
+
+Atualização de Produto (PUT /produto/{id}):
+http://localhost:8080/produto/{id}.
+No corpo da requisição (Body), selecione o tipo JSON e insira os dados do produto que deseja atualizar.
+
+Consulta de Produto por ID (GET /produto/{id}):
+http://localhost:8080/produto/{id}.
+
+Exclusão de Produto por ID (DELETE /produto/{id}):
+http://localhost:8080/produto/{id}.
+
+Consulta de Produto por Nome (GET /produto/por-nome?nome={nome}):
+http://localhost:8080/produto/por-nome?nome={nome}.
