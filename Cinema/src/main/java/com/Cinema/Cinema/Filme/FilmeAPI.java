@@ -18,7 +18,8 @@ public class FilmeAPI {
         this.filmeService = filmeService;
     }
 
-//    @PostMapping("")
-//    public ResponseEntity<Filme> cadastraFilme(@RequestBody Filme)
-
+    @PostMapping("")
+    public ResponseEntity<Filme> cadastraFilme(@RequestBody Filme filme){
+        return ResponseEntity.ok(this.filmeService.cadastrarFilme(filme));
+    }
 }
