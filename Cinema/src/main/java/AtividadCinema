@@ -52,3 +52,12 @@ Aqui, deverá ser informado o filme e a sessão para mostrar os assentos
  - Ao comprar um ingresso, o cliente deverá selecionar o filme, a sessão e os números de assentos;
 Um cliente poderá comprar mais de um ingresso;
 Só será finalizado a compra do ingresso se os assentos estiverem livres;
+
+RELACIONAMENTOS:
+
+1 Pessoa pode comprar varios Assentos
+varios Assentos podem serem comprados por 1 Pessoa
+
+1 sessao pode ter varios filmes
+1 filme pode ter varias sessoes
+

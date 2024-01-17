@@ -5,12 +5,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4aebdda4-87bc-4377-8f6a-0a36ae21e94e" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../Cinema/src/main/java/com/Cinema/Cinema/Assentos/AssentoRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Cinema/src/main/java/com/Cinema/Cinema/DTO/GerarSessoesAssentos.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Cinema/src/main/java/com/Cinema/Cinema/EntityID.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Cinema/src/main/java/com/Cinema/Cinema/Pessoa/PessoaRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Cinema/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Cinema/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Cinema/h2db.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/../Cinema/h2db.mv.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Cinema/src/main/java/AtividadCinema" beforeDir="false" afterPath="$PROJECT_DIR$/../Cinema/src/main/java/AtividadCinema" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Cinema/src/main/java/com/Cinema/Cinema/Assentos/Assentos.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Cinema/src/main/java/com/Cinema/Cinema/Assentos/Assentos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Cinema/src/main/java/com/Cinema/Cinema/Filme/Filme.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Cinema/src/main/java/com/Cinema/Cinema/Filme/Filme.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Cinema/src/main/java/com/Cinema/Cinema/Filme/FilmeAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Cinema/src/main/java/com/Cinema/Cinema/Filme/FilmeAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Cinema/src/main/java/com/Cinema/Cinema/Filme/FilmeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Cinema/src/main/java/com/Cinema/Cinema/Filme/FilmeRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Cinema/src/main/java/com/Cinema/Cinema/Filme/FilmeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Cinema/src/main/java/com/Cinema/Cinema/Filme/FilmeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Cinema/src/main/java/com/Cinema/Cinema/Pessoa/Pessoa.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Cinema/src/main/java/com/Cinema/Cinema/Pessoa/Pessoa.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Cinema/src/main/java/com/Cinema/Cinema/Sessao/Sessao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Cinema/src/main/java/com/Cinema/Cinema/Sessao/Sessao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Cinema/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../Cinema/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Cinema/target/classes/com/Cinema/Cinema/Assentos/Assentos.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Cinema/target/classes/com/Cinema/Cinema/Assentos/Assentos.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Cinema/target/classes/com/Cinema/Cinema/Filme/Filme.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Cinema/target/classes/com/Cinema/Cinema/Filme/Filme.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Cinema/target/classes/com/Cinema/Cinema/Filme/FilmeRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Cinema/target/classes/com/Cinema/Cinema/Filme/FilmeRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Cinema/target/classes/com/Cinema/Cinema/Pessoa/Pessoa.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Cinema/target/classes/com/Cinema/Cinema/Pessoa/Pessoa.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Cinema/target/classes/com/Cinema/Cinema/Sessao/Sessao.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Cinema/target/classes/com/Cinema/Cinema/Sessao/Sessao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" afterPath="$PROJECT_DIR$/mvnw" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mvnw.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/mvnw.cmd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/semanaDois/semanaDois/Produto/Produto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/semanaDois/semanaDois/Produto/Produto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/semanaDois/semanaDois/Produto/ProdutoAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/semanaDois/semanaDois/Produto/ProdutoAPI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/semanaDois/semanaDois/Produto/ProdutoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/semanaDois/semanaDois/Produto/ProdutoRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/semanaDois/semanaDois/Produto/ProdutoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/semanaDois/semanaDois/Produto/ProdutoService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/semanaDois/semanaDois/SemanaDoisApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/semanaDois/semanaDois/SemanaDoisApplication.java" afterDir="false" />

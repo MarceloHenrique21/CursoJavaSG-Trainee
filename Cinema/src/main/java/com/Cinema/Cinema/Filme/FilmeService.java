@@ -1,11 +1,13 @@
 package com.Cinema.Cinema.Filme;
 
+import com.Cinema.Cinema.DTO.GerarSessoesAssentos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.beans.Transient;
+
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class FilmeService {
@@ -29,5 +31,19 @@ public class FilmeService {
     @Transactional
     public List<Filme> buscarNome(String nome){
         return this.filmeRepository.findAllByNome("%" + nome + "%");
+    }
+//   @Transactional
+//   public Filme getById(Integer filmeID) {
+//    }
+
+    @Transactional
+    public void gerarSessoesAssentos(GerarSessoesAssentos dto){
+        Filme filme = this.getById(dto.getFilmeID());
+        if(Objects.nonNull(filme)){
+
+            this.cadastrarFilme(filme);
+        }else{
+            throw new RuntimeException("filme nao encontrado");
+        }
     }
 }

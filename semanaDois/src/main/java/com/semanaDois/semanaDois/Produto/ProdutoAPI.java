@@ -44,7 +44,7 @@ public class ProdutoAPI {
         return ResponseEntity.accepted().build();
     }
 
-    // Endpoint para buscar produtos por nome usando um parâmetro de consulta
+    // Endpoint para buscar produtos por nome
     @GetMapping("/por-nome")
     public ResponseEntity<List<com.semanaDois.semanaDois.Produto.Produto>> findByNome(@RequestParam(name = "nome") String nome) {
         return ResponseEntity.ok(this.produtoService.findByNome(nome));

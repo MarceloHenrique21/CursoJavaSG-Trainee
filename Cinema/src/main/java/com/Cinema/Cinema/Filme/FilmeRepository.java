@@ -10,8 +10,8 @@ import java.util.List;
 
 @Repository
 public interface FilmeRepository extends JpaRepository<Filme, Integer> {
-    // Consulta personalizada para encontrar produtos por nome (ignorando maiúsculas/minúsculas)
+
     @Query(nativeQuery = true,
-            value = "SELECT * FROM produto WHERE nome ILIKE :nome")
+            value = "SELECT * FROM Filme WHERE nome ILIKE :nome")
     List<Filme> findAllByNome(@Param("nome") String nome);
 }

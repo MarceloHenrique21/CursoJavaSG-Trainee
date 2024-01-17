@@ -1,5 +1,7 @@
 package com.Cinema.Cinema.Sessao;
 
+import com.Cinema.Cinema.Assentos.Assentos;
+import com.Cinema.Cinema.EntityID;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -7,25 +9,25 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity(name = "Sessao")
-public class Sessao {
-
-    @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+public class Sessao extends EntityID {
 
     @Column(name = "numeroDaSessao")
     private Integer numeroDaSessao;
 
-    @Column(name = "horaInicio")
-    private Date horaInicio;
+    @Column(name = "horarioInicio")
+    private Date horarioInicio;
 
-    @Column(name = "horaFim")
-    private Date horaFim;
+    @Column(name = "horarioTermino")
+    private Date horarioTermino;
+
+    @JoinColumn(name = "Sessao_id")
+    @OneToMany(cascade = CascadeType.ALL)
+    List<Assentos> assentoList;
 }
