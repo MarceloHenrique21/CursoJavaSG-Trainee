@@ -40,7 +40,7 @@ public class ProdutoAPI {
     // Endpoint para deletar um produto pelo ID
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletarPorId(@PathVariable Integer id) {
-        this.produtoService.deletarProduto(id);
+        this.produtoService. deletarProduto(id);
         return ResponseEntity.accepted().build();
     }
 

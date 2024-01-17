@@ -1,7 +1,6 @@
 package com.Cinema.Cinema.Sessao;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,6 +14,11 @@ import java.util.Date;
 @AllArgsConstructor
 @Entity(name = "Sessao")
 public class Sessao {
+
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
 
     @Column(name = "numeroDaSessao")
     private Integer numeroDaSessao;

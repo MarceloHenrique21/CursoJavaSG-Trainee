@@ -1,7 +1,6 @@
 package com.Cinema.Cinema.Assentos;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,6 +12,11 @@ import lombok.Setter;
 @AllArgsConstructor
 @Entity(name = "Assentos")
 public class Assentos {
+
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
 
     @Column(name = "fileira")
     private int fileira;
