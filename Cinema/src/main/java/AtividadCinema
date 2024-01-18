@@ -1,0 +1,63 @@
+dependências:
+Spring data jpa;
+Spring web;
+H2;
+Lombok.
+
+Cinema
+Desenvolver um programa para cadastro de filmes e compra de ingresso por autoatendimento.
+
+1 - Cadastrar filme
+2 - Excluir filme
+3 - Exibir filmes em cartazes
+
+4 - Exibir horários das sessões
+
+5 - Comprar ingresso
+
+6 - Exibir assentos livres
+
+Tabelas:
+
+Filme = {nome, data início cartaz, data fim cartaz}
+Sessão = {número da sessão, horários início, horário término}
+Assentos = {fileira, número}
+Pessoa = {nome}
+
+Regras e Funcionalidades:
+
+1 - Cadastro de filme
+
+- O programa permitirá cadastrar:
+
+Nome do filme;
+Data de início do cartaz;
+Data de término do cartaz;
+
+2- Exclusão de filme
+ - Excluir filmes apenas se não tiver ingresso comprado
+
+3- Exibir filmes em cartaz
+ - Mostrar os filmes que estão/serão exibidos no dia
+
+4- Exibir horários das sessões
+
+5 - Exibir os horários das sessões em que o filme será apresentado
+
+5-Exibir os assentos livres de um filme
+ - Mostrar assentos livres por filme:
+Aqui, deverá ser informado o filme e a sessão para mostrar os assentos
+
+6- Comprar ingresso
+ - Ao comprar um ingresso, o cliente deverá selecionar o filme, a sessão e os números de assentos;
+Um cliente poderá comprar mais de um ingresso;
+Só será finalizado a compra do ingresso se os assentos estiverem livres;
+
+RELACIONAMENTOS:
+
+1 Pessoa pode comprar varios Assentos
+varios Assentos podem serem comprados por 1 Pessoa
+
+1 sessao pode ter varios filmes
+1 filme pode ter varias sessoes
+
