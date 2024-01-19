@@ -3,6 +3,7 @@ package com.Cinema.Cinema.Filme;
 import com.Cinema.Cinema.Assentos.Assentos;
 import com.Cinema.Cinema.DTO.GerarSessoesAssentos;
 import com.Cinema.Cinema.Sessao.Sessao;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -43,40 +44,46 @@ public class FilmeService {
         return this.filmeRepository.findById(id).orElse(null);
     }
 
-
-
     @Transactional
     public ResponseEntity<String> gerarSessoesAssentos(GerarSessoesAssentos dto) {
-        Filme filme = this.getById(dto.getFilmeID());
+        Filme filme = this.filmeRepository.findById(dto.getFilmeID())
+                .orElseThrow(() -> new EntityNotFoundException("Filme não encontrado"));
 
-        if (Objects.nonNull(filme)) {
-            filme.setSessaoList(new ArrayList<>());
+        // Remover sessões existentes
+        filme.getSessaoList().clear();
 
-            for (int i = 0; i < dto.getNumeroSessoes(); i++) {
-                Sessao sessao = new Sessao();
+        Date dataAtual = new Date();
+        Date dataInicioCartaz = filme.getInicioCartaz();
+        Date dataFimCartaz = filme.getFimCartaz();
 
-                sessao.setNumeroDaSessao(i + 1);
-                sessao.setHorarioInicio(new Date());
-                sessao.setAssentoList(new ArrayList<>());
+        if (dataAtual.before(dataInicioCartaz) || dataAtual.after(dataFimCartaz)) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body("Filme não está mais em cartaz.");
+        }
 
-                for (int j = 0; j < dto.getNumeroAssentos(); j++) {
-                    Assentos assento = new Assentos();
-                    assento.setNumero(j + 1);
-                    assento.setFileira("A");
+        // Lógica para gerar sessões e assentos
+        int numeroSessoes = dto.getNumeroSessoes();
+        int numeroAssentos = dto.getNumeroAssentos();
 
-                    sessao.getAssentoList().add(assento);
-                }
+        for (int i = 0; i < numeroSessoes; i++) {
+            Sessao sessao = new Sessao();
+            sessao.setNumeroDaSessao(i + 1);
+            sessao.setHorarioInicio(new Date());
+            sessao.setAssentoList(new ArrayList<>());
 
-                filme.getSessaoList().add(sessao);
+            for (int j = 0; j < numeroAssentos; j++) {
+                Assentos assento = new Assentos();
+                assento.setNumero(j + 1);
+                assento.setFileira("A");
+
+                sessao.getAssentoList().add(assento);
             }
 
-            this.cadastrarFilme(filme);
-
-            return ResponseEntity.ok("Sessões e assentos gerados com sucesso");
-
-        } else {
-
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Filme não encontrado");
+            filme.getSessaoList().add(sessao);
         }
+
+        this.filmeRepository.save(filme);
+
+        return ResponseEntity.ok("Sessões e assentos gerados com sucesso");
     }
 }

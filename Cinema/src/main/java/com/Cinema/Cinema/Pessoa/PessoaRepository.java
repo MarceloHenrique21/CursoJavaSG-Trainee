@@ -13,5 +13,7 @@ public interface PessoaRepository extends JpaRepository<Pessoa, String> {
     @Query(nativeQuery = true,
             value = "SELECT * FROM Pessoa WHERE nome ILIKE :nome")
     List<Pessoa> findAllByNome(@Param("nome") String nome);
+
+    Pessoa getById(Integer pessoaId);
 }
 

@@ -68,3 +68,65 @@ varios Assentos podem serem comprados por 1 Pessoa
 1 filme pode ter varias sessoes
 
 
+
+
+// endpoints
+
+Cadastrar Filme:
+
+Método: POST
+URL: http://localhost:8080/filme
+Corpo da Requisição (JSON):
+json
+{
+  "nome": "Nome do Filme",
+  "inicioCartaz": "2024-01-01",  // Data de início no formato "yyyy-MM-dd"
+  "fimCartaz": "2024-01-10"      // Data de término no formato "yyyy-MM-dd"
+}
+
+Buscar Filme por Nome:
+Método: GET
+URL: http://localhost:8080/filme/por-nome?nome=Nome do Filme
+
+Excluir Filme:
+Método: DELETE
+URL: http://localhost:8080/filme/{id}
+Substitua {id} pelo ID do filme que deseja excluir.
+
+Gerar Sessões e Assentos:
+Método: POST
+URL: http://localhost:8080/filme/gerar-sessoes-assentos
+Corpo da Requisição (JSON):
+json
+{
+  "filmeID": 1,
+  "numeroSessoes": 5,
+  "numeroAssentos": 10
+}
+Substitua 1 pelo ID do filme para o qual deseja gerar sessões e assentos.
+
+Cadastrar Pessoa:
+Método: POST
+URL: http://localhost:8080/pessoa
+Corpo da Requisição (JSON):
+json
+{
+  "nome": "Nome da Pessoa"
+}
+
+Buscar Pessoa por Nome:
+Método: GET
+URL: http://localhost:8080/pessoa/{id}
+Substitua {id} pelo ID da pessoa.
+
+Comprar Assento:
+Método: POST
+URL: http://localhost:8080/pessoa/comprar-assento/{filmeId}
+Substitua {filmeId} pelo ID do filme para o qual deseja comprar um assento.
+Corpo da Requisição (JSON):
+json
+{
+  "pessoaId": 1,
+  "sessaoId": 1,
+  "numerosAssentos": [1, 2, 3]
+}

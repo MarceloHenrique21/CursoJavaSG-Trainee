@@ -1,5 +1,6 @@
 package com.Cinema.Cinema.Pessoa;
 
+import com.Cinema.Cinema.DTO.ComprarAssentoDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -25,11 +26,13 @@ public class PessoaAPI {
         return ResponseEntity.ok(this.pessoaService.buscarNome(nome));
     }
 
-//    @PostMapping("/comprar assento/{filmeID}")
-//    public ResponseEntity comprarAssento(@PathVariable Integer filmeId,
-//                                         @RequestParam(name = "pessoaId") Integer pessoaId,
-//                                         @RequestBody ComprarAssentoDTO comprarAssentoDTODTO){
-//
-//    }
+    @PostMapping("/comprar-assento/{filmeId}")
+    public ResponseEntity<String> comprarAssento(
+            @PathVariable Integer filmeId,
+            @RequestParam(name = "pessoaId") Integer pessoaId,
+            @RequestBody ComprarAssentoDTO comprarAssentoDTO
+    ) {
+        return pessoaService.comprarAssento(filmeId, pessoaId, comprarAssentoDTO);
+    }
 
 }
