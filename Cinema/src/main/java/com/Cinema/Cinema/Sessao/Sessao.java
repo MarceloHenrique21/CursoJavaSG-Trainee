@@ -30,4 +30,5 @@ public class Sessao extends EntityID {
     @JoinColumn(name = "Sessao_id")
     @OneToMany(cascade = CascadeType.ALL)
     List<Assentos> assentoList;
+
 }

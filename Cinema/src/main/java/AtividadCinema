@@ -5,11 +5,11 @@ H2;
 Lombok.
 
 Cinema
-Desenvolver um programa para cadastro de filmes e compra de ingresso por autoatendimento.
+Desenvolver um programa para cadastro de filmes e compra de Assentos por autoatendimento.
 
 1 - Cadastrar filme
 2 - Excluir filme
-3 - Exibir filmes em cartazes
+3 - Exibir filmes
 
 4 - Exibir horários das sessões
 
@@ -44,14 +44,20 @@ Data de término do cartaz;
 
 5 - Exibir os horários das sessões em que o filme será apresentado
 
-5-Exibir os assentos livres de um filme
+5 -Exibir os assentos livres de um filme
  - Mostrar assentos livres por filme:
 Aqui, deverá ser informado o filme e a sessão para mostrar os assentos
 
-6- Comprar ingresso
- - Ao comprar um ingresso, o cliente deverá selecionar o filme, a sessão e os números de assentos;
-Um cliente poderá comprar mais de um ingresso;
-Só será finalizado a compra do ingresso se os assentos estiverem livres;
+6 - Comprar ingresso
+Ao comprar um ingresso, o cliente deverá selecionar o filme, a sessão e os números de assentos;
+Um cliente poderá comprar mais de um assento;
+Só será finalizado a compra do assento se os assentos estiverem livres;
+Pegar id do filme, dia da sessao, numero da sessao, numero do(s) assentos que eu desejo comprar
+se um dos assentos não estiver disponivel nao compra nenhum
+
+
+7 - gerenciar assentos e os dias que o filme fica em cartaz
+
 
 RELACIONAMENTOS:
 
@@ -60,4 +66,5 @@ varios Assentos podem serem comprados por 1 Pessoa
 
 1 sessao pode ter varios filmes
 1 filme pode ter varias sessoes
+
 

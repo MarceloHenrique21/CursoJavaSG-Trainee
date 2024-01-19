@@ -2,8 +2,8 @@ package com.Cinema.Cinema.Filme;
 
 import com.Cinema.Cinema.DTO.GerarSessoesAssentos;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -40,10 +40,15 @@ public class FilmeAPI {
         return ResponseEntity.accepted().build();
     }
 
-
     @PostMapping("/gerar-sessoes-assentos")
-    public ResponseEntity gerarSessoesAssentos(@RequestBody GerarSessoesAssentos gerarSessoesAssentos){
-       this.gerarSessoesAssentos(gerarSessoesAssentos);
-        return ResponseEntity.accepted().build();
+    public ResponseEntity<String> gerarSessoesAssentos(@RequestBody GerarSessoesAssentos gerarSessoesAssentos) {
+        try {
+            this.filmeService.gerarSessoesAssentos(gerarSessoesAssentos);
+            return ResponseEntity.ok("Sessões e assentos gerados com sucesso");
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        }
     }
 }
+
+
