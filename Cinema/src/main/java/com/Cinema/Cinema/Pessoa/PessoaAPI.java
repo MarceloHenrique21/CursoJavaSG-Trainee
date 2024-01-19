@@ -32,7 +32,7 @@ public class PessoaAPI {
             @RequestParam(name = "pessoaId") Integer pessoaId,
             @RequestBody ComprarAssentoDTO comprarAssentoDTO
     ) {
-        return pessoaService.comprarAssento(filmeId, pessoaId, comprarAssentoDTO);
+        return pessoaService.comprarAssento(filmeId, pessoaId, comprarAssentoDTO.getNumerosAssentos());
     }
 
 }

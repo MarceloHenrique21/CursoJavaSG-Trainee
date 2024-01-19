@@ -1,28 +1,27 @@
 package com.Cinema.Cinema.Pessoa;
 
+import com.Cinema.Cinema.Assentos.AssentoRepository;
 import com.Cinema.Cinema.Assentos.Assentos;
-import com.Cinema.Cinema.DTO.ComprarAssentoDTO;
-import com.Cinema.Cinema.Filme.Filme;
-import com.Cinema.Cinema.Filme.FilmeService;
 import com.Cinema.Cinema.Sessao.Sessao;
+import com.Cinema.Cinema.Sessao.SessaoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class PessoaService {
 
     private final PessoaRepository pessoaRepository;
-    private FilmeService filmeService;
+    private final SessaoRepository sessaoRepository;
+    private final AssentoRepository assentoRepository;
 
     @Autowired
-    public PessoaService(PessoaRepository pessoaRepository){
+    public PessoaService(PessoaRepository pessoaRepository, SessaoRepository sessaoRepository, AssentoRepository assentoRepository){
         this.pessoaRepository = pessoaRepository;
+        this.sessaoRepository = sessaoRepository;
+        this.assentoRepository = assentoRepository;
     }
 
     @Transactional
@@ -35,35 +34,34 @@ public class PessoaService {
         return this.pessoaRepository.findAllByNome("%" + nome + "%");
     }
 
-    public ResponseEntity<String> comprarAssento(Integer filmeId, Integer pessoaId, ComprarAssentoDTO comprarAssentoDTO) {
-        Filme filme = filmeService.getById(filmeId);
+
+    public ResponseEntity<String> comprarAssento(Integer pessoaId, Integer sessaoId, List<Integer> numerosAssentos) {
         Pessoa pessoa = pessoaRepository.getById(pessoaId);
+        Sessao sessao = sessaoRepository.getById(sessaoId);
 
-        if (filme == null || pessoa == null) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Filme ou Pessoa não encontrados.");
+        if (pessoa != null && sessao != null) {
+            for (Integer numeroAssento : numerosAssentos) {
+                Assentos assento = assentoRepository.findBySessaoAndNumero(sessao, numeroAssento);
+
+                if (assento == null || !assento.isDisponivel()) {
+                    return ResponseEntity.badRequest().body("O assento " + numeroAssento + " na sessão " + sessaoId + " não está disponível.");
+                }
+            }
+
+            // Todos os assentos estão livres
+            for (Integer numeroAssento : numerosAssentos) {
+                Assentos assento = assentoRepository.findBySessaoAndNumero(sessao, numeroAssento);
+                assento.setDisponivel(false);
+                assentoRepository.save(assento);
+
+                pessoa.getAssentosList().add(assento);
+            }
+
+            pessoaRepository.save(pessoa);
+
+            return ResponseEntity.ok("Ingresso(s) comprado(s) com sucesso.");
+        } else {
+            return ResponseEntity.notFound().body("Pessoa ou sessão não encontrada.");
         }
-
-        Sessao sessao = filme.getSessaoList().stream()
-                .filter(s -> s.getId().equals(comprarAssentoDTO.getSessaoID()))
-                .findFirst()
-                .orElse(null);
-
-        if (sessao == null) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Sessão não encontrada.");
-        }
-
-        List<Assentos> assentos = sessao.getAssentoList().stream()
-                .filter(a -> comprarAssentoDTO.getNumerosAssentos().contains(a.getNumero()))
-                .collect(Collectors.toList());
-
-        if (assentos.size() != comprarAssentoDTO.getNumerosAssentos().size()) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Alguns assentos selecionados não estão disponíveis.");
-        }
-
-        pessoa.getAssentosList().addAll(assentos);
-        pessoaRepository.save(pessoa);
-
-        return ResponseEntity.ok("Ingressos comprados com sucesso.");
     }
-
 }

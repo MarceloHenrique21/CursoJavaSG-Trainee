@@ -49,7 +49,6 @@ public class FilmeService {
         Filme filme = this.filmeRepository.findById(dto.getFilmeID())
                 .orElseThrow(() -> new EntityNotFoundException("Filme não encontrado"));
 
-        // Remover sessões existentes
         filme.getSessaoList().clear();
 
         Date dataAtual = new Date();
@@ -61,7 +60,6 @@ public class FilmeService {
                     .body("Filme não está mais em cartaz.");
         }
 
-        // Lógica para gerar sessões e assentos
         int numeroSessoes = dto.getNumeroSessoes();
         int numeroAssentos = dto.getNumeroAssentos();
 
@@ -83,7 +81,6 @@ public class FilmeService {
         }
 
         this.filmeRepository.save(filme);
-
         return ResponseEntity.ok("Sessões e assentos gerados com sucesso");
     }
 }
