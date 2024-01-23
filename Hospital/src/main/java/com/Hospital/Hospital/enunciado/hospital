@@ -1,0 +1,92 @@
+
+Controle de pacientes de hospital
+
+Desenvolver um programa para controlar vagas de leitos em um hospital.
+
+CLASSES: 
+
+HOSPITAL
+QUARTO
+ALA
+LEITO
+PACIENTE
+
+
+Relações:
+
+1 ala para varios quartos
+
+1 quarto para varios leitos
+
+1 leito para 1 paciente
+
+
+
+REGRAS E FUNCIONALIDADES:
+
+- O programa deverá cadastrar hospitais (ilimitados);
+
+- Para cada hospital poderão ser cadastradas alas referente a algumas especialidades (por exemplo: Cardiologia, neurologia, ortopedia, pediatria...); ????
+
+- As alas terão vários quartos;
+
+- Os quartos terão vários leitos;
+
+- Cada leito permitirá o internamento de apenas um paciente.
+
+
+CADASTRAR HOSPITAL/ALAS/QUARTOS/LEITOS
+
+Hospital{id, nome}
+
+Ala{id, especialidade, hospital_id}
+
+Quarto{id, codigo, status, ala_id}
+
+Leito{id, codigo, status, quarto_id, paciente_id}
+
+Paciente{id, nome}
+
+Log Internações{id, leito_id, paciente_id, data_internamento, data_alta}
+
+
+Ao cadastrar uma ala, informar a sua especialidade, quantidade de quartos e quantidade de leitos por quarto;
+
+Os quartos e leitos deverão ser gerados automaticamente após a requisição para gerar as alas;
+
+Os quartos deverão ter um código conforme o exemplo:
+	Ala Cardiologia - quarto número 1 => CAR1
+	Ala Cardiologia - quarto número 2 => CAR2
+	Ala Pediatria - quarto número 1 => PED1
+
+Os leitos também deverão ter um código conforme o exemplo:
+	Ala Cardiologia - quarto número 1 - leito número 1 = > CAR1-1
+	Ala Cardiologia - quarto número 1 - leito número 2 = > CAR1-2
+	Ala Neurologia - quarto número 3 - leito número 2 = > NEU3-2
+
+INTERNAR PACIENTES
+
+Para internar um paciente, deverá ser verificado se há algum leito disponível de acordo com a especialidade;
+
+Ao internar, deverá ser informado o paciente, a ala, o quarto e o leito e alterar o status do leito para ocupado.
+
+Informar a Data/hora do internamento (data e hora atual);
+
+Data/hora de alta deverá ser null no momento do internamento (data e hora atual);
+
+Ao dar alta para o paciente, preencher a data/hora  e setar status do leito para LIBERADO
+
+EXIBIR RELATÓRIOS
+
+Deverá ser informado qual hospital deseja retornar as informações das seguintes requisições:
+Criar requisição para mostrar leitos livres por especialidade;
+Criar requisição para mostrar quarto em que o  paciente está internado
+Criar requisição para mostrar todos os leitos
+Criar requisição para mostrar a quantidade de quartos livres, ocupados e total por especialidade;
+
+
+Situacao
+
+quarto (SemVagas, ComVagas)
+leito (Liberado ou ocupado)
+

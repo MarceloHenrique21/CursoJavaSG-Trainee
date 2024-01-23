@@ -26,6 +26,7 @@ public class LivroService {
     public Livro pegarPorId(Integer id) {
         return this.livroRepository.findById(id).orElseThrow();
     }
+
     @Transactional
     public Livro salvar(Livro livro) {
         this.validarLivro(livro);
