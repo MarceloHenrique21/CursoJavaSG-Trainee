@@ -49,9 +49,9 @@ Paciente{id, nome}
 
 Log Internações{id, leito_id, paciente_id, data_internamento, data_alta}
 
-
+DTO:
+Passar id do hospital para criar as alas
 Ao cadastrar uma ala, informar a sua especialidade, quantidade de quartos e quantidade de leitos por quarto;
-
 Os quartos e leitos deverão ser gerados automaticamente após a requisição para gerar as alas;
 
 Os quartos deverão ter um código conforme o exemplo:

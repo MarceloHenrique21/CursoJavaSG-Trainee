@@ -22,8 +22,10 @@ public class LogInternacoes extends EntityId {
     private Date dataInternamento;
     @Column(name = "dataAlta")
     private Date dataAlta;
-    @JoinColumn(name = "leito_id")
-    List<Leito> LeitoList;
-    @JoinColumn(name = "paciente_id")
-    List<Paciente> PacienteList;
+
+    @Column(name = "leito_id")
+    private Integer leitoId;
+
+    @Column(name = "paciente_id")
+    private Integer pacienteId;
 }
