@@ -26,7 +26,7 @@ public class HospitalAPI {
     }
 
     @PostMapping("/gerar-alas")
-    public ResponseEntity gerarIdentificadores(@RequestBody GerarAlaDTO dto) {
+    public ResponseEntity gerarAlas(@RequestBody GerarAlaDTO dto) {
         return ResponseEntity.ok(this.hospitalService.gerarAlas(dto));
     }
 }
