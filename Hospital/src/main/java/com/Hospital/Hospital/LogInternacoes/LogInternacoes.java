@@ -6,6 +6,7 @@ import com.Hospital.Hospital.Paciente.Paciente;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -28,4 +29,8 @@ public class LogInternacoes extends EntityId {
 
     @Column(name = "paciente_id")
     private Integer pacienteId;
+
+    @ManyToOne
+    @JoinColumn(name = "leito_id")
+    private Leito leito;
 }

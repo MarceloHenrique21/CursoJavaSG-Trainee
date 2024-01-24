@@ -1,0 +1,73 @@
+ Criar uma Ala:
+
+Método: POST
+Endpoint: /hospital/{hospitalId}/ala
+Corpo da Requisição (JSON):
+
+json
+Copy code
+{
+    "especialidade": "Cardiologia",
+    "qtdeQuartos": 3,
+    "qtdeLeitos": 2
+}
+Resposta Esperada (JSON):
+
+json
+Copy code
+{
+    "id": 1,
+    "especialidade": "Cardiologia",
+    "quartoList": [
+        {
+            "id": 1,
+            "codigo": "QU1-1",
+            "status": "LIVRE",
+            "leitoList": [
+                {
+                    "id": 1,
+                    "codigo": "QU1-1-1",
+                    "status": "LIVRE",
+                    "pacienteId": null
+                },
+                {
+                    "id": 2,
+                    "codigo": "QU1-1-2",
+                    "status": "LIVRE",
+                    "pacienteId": null
+                }
+            ]
+        },
+        // Outros quartos e leitos gerados...
+    ]
+}
+2. Consultar uma Ala:
+
+Método: GET
+Endpoint: /ala/{alaId}
+
+3. Adicionar um Paciente a um Leito:
+
+Método: PUT
+Endpoint: /leito/{leitoId}/paciente
+Corpo da Requisição (JSON):
+
+json
+Copy code
+{
+    "pacienteId": 123
+}
+Resposta Esperada (JSON):
+
+json
+Copy code
+{
+    "id": 1,
+    "codigo": "QU1-1-1",
+    "status": "OCUPADO",
+    "pacienteId": 123
+}
+4. Listar Leitos Ocupados em uma Ala:
+
+Método: GET
+Endpoint: /ala/{alaId}/leitos/ocupados

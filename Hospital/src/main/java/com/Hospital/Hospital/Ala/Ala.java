@@ -2,6 +2,7 @@ package com.Hospital.Hospital.Ala;
 
 import com.Hospital.Hospital.GerarID.EntityId;
 import com.Hospital.Hospital.Quarto.Quarto;
+import com.Hospital.Hospital.Situacao.SituacaoQuarto;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,4 +22,18 @@ public class Ala extends EntityId {
     @JoinColumn(name = "ala_id")
     @OneToMany(cascade = CascadeType.ALL)
     List<Quarto> QuartoList;
+
+    public void adicionarQuarto(Quarto quarto) {
+        QuartoList.add(quarto);
+    }
+
+    public void gerarQuartos(Integer qtdeQuartos, Long hospitalId) {
+        for (int i = 1; i <= qtdeQuartos; i++) {
+            Quarto quarto = new Quarto();
+            quarto.setCodigo("QU" + hospitalId + "-" + i); // Exemplo: QU1-1
+            quarto.setStatus(SituacaoQuarto.COMVAGAS); // ou outro status padrão
+            adicionarQuarto(quarto);
+            quarto.gerarLeitos(quarto.getCodigo());
+        }
+    }
 }
