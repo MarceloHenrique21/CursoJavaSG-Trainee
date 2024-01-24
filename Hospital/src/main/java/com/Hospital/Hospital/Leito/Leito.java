@@ -30,5 +30,4 @@ public class Leito extends EntityId {
 
     @OneToMany(mappedBy = "leito", cascade = CascadeType.ALL)
     private List<LogInternacoes> logInternacoesList;
-
 }

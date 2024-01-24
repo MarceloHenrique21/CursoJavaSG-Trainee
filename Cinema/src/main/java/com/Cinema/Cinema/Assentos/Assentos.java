@@ -22,7 +22,7 @@ public class Assentos extends EntityID {
     private int numero;
 
     @Column(name = "disponivel")
-    private boolean disponivel; // Adicionando a propriedade disponivel
+    private boolean disponivel;
 
     @ManyToOne
     @JoinColumn(name = "sessao_id")

@@ -1,5 +1,7 @@
 package com.Hospital.Hospital.Paciente;
 
+import com.Hospital.Hospital.Hospital.Hospital;
+import com.Hospital.Hospital.Hospital.HospitalService;
 import com.Hospital.Hospital.Leito.LeitoRepository;
 import com.Hospital.Hospital.Situacao.SituacaoLeito;
 import com.Hospital.Hospital.Situacao.SituacaoQuarto;
@@ -10,11 +12,20 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.Hospital.Hospital.Paciente.InternarPacienteDTO;
 @RestController
-@RequestMapping("/api/pacientes")
+@RequestMapping("/paciente")
 public class PacienteAPI {
 
+    private final PacienteService pacienteService;
+
     @Autowired
-    private PacienteService pacienteService;
+    public PacienteAPI(PacienteService pacienteService){
+        this.pacienteService = pacienteService;
+    }
+
+    @PostMapping
+    public ResponseEntity salvar(@RequestBody Paciente paciente){
+        return ResponseEntity.ok(this.pacienteService.salvar(paciente));
+    }
 
     @PostMapping("/internar")
     public ResponseEntity<String> internarPaciente(@RequestBody InternarPacienteDTO internarPacienteDTO) {
@@ -22,19 +33,6 @@ public class PacienteAPI {
         Ala ala = internarPacienteDTO.getAla();
 
         pacienteService.internarPaciente(paciente, ala);
-
         return ResponseEntity.ok("Paciente internado com sucesso.");
     }
-
-    @PostMapping("/dar-alta")
-    public ResponseEntity<String> darAltaPaciente(@RequestParam Long leitoId) {
-        Leito leito = LeitoRepository.findById(leitoId)
-                .orElseThrow(() -> new RuntimeException("Leito não encontrado"));
-
-        pacienteService.darAltaPaciente(leito);
-
-        return ResponseEntity.ok("Paciente teve alta com sucesso.");
-    }
-
-    // Outros métodos e endpoints relacionados aos pacientes...
 }

@@ -19,13 +19,15 @@ import java.util.List;
 @NoArgsConstructor
 @Entity(name = "logInternacoes")
 public class LogInternacoes extends EntityId {
+
     @Column(name = "dataInternamento")
     private Date dataInternamento;
+
     @Column(name = "dataAlta")
     private Date dataAlta;
 
-    @Column(name = "leito_id")
-    private Integer leitoId;
+    @Column(name = "leito_id", insertable = false, updatable = false)
+    private Long leitoId;
 
     @Column(name = "paciente_id")
     private Integer pacienteId;

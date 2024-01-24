@@ -1,7 +1,5 @@
 package com.Hospital.Hospital.Hospital;
 
-
-import com.Hospital.Hospital.DTO.GerarAlaDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,7 +24,7 @@ public class HospitalAPI {
     }
 
     @PostMapping("/gerar-alas")
-    public ResponseEntity gerarAlas(@RequestBody GerarAlaDTO dto) {
-        return ResponseEntity.ok(this.hospitalService.gerarAlas(dto));
+    public ResponseEntity gerarAlas(@RequestBody Hospital hospital) {
+        return ResponseEntity.ok(this.hospitalService.gerarAlas(hospital));
     }
 }
