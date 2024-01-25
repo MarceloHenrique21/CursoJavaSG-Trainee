@@ -21,36 +21,24 @@ Relações:
 1 leito para 1 paciente
 
 
+Controle de pacientes de hospital
+Desenvolver um programa para controlar vagas de leitos em um hospital.
 
 REGRAS E FUNCIONALIDADES:
-
 - O programa deverá cadastrar hospitais (ilimitados);
-
-- Para cada hospital poderão ser cadastradas alas referente a algumas especialidades (por exemplo: Cardiologia, neurologia, ortopedia, pediatria...); ????
-
+- Para cada hospital poderão ser cadastradas alas referente a algumas especialidades (por exemplo: Cardiologia, neurologia, ortopedia, pediatria...);
 - As alas terão vários quartos;
-
 - Os quartos terão vários leitos;
-
 - Cada leito permitirá o internamento de apenas um paciente.
 
-
 CADASTRAR HOSPITAL/ALAS/QUARTOS/LEITOS
-
 Hospital{id, nome}
-
 Ala{id, especialidade, hospital_id}
-
 Quarto{id, codigo, status, ala_id}
-
 Leito{id, codigo, status, quarto_id, paciente_id}
-
 Paciente{id, nome}
 
 Log Internações{id, leito_id, paciente_id, data_internamento, data_alta}
-
-DTO:
-Passar id do hospital para criar as alas
 Ao cadastrar uma ala, informar a sua especialidade, quantidade de quartos e quantidade de leitos por quarto;
 Os quartos e leitos deverão ser gerados automaticamente após a requisição para gerar as alas;
 
@@ -64,6 +52,7 @@ Os leitos também deverão ter um código conforme o exemplo:
 	Ala Cardiologia - quarto número 1 - leito número 2 = > CAR1-2
 	Ala Neurologia - quarto número 3 - leito número 2 = > NEU3-2
 
+
 INTERNAR PACIENTES
 
 Para internar um paciente, deverá ser verificado se há algum leito disponível de acordo com a especialidade;
@@ -76,13 +65,116 @@ Data/hora de alta deverá ser null no momento do internamento (data e hora atual
 
 Ao dar alta para o paciente, preencher a data/hora  e setar status do leito para LIBERADO
 
-EXIBIR RELATÓRIOS
+Internar um paciente passando o paciente e a ALA em que ele será internado
 
-Deverá ser informado qual hospital deseja retornar as informações das seguintes requisições:
-Criar requisição para mostrar leitos livres por especialidade;
-Criar requisição para mostrar quarto em que o  paciente está internado
-Criar requisição para mostrar todos os leitos
-Criar requisição para mostrar a quantidade de quartos livres, ocupados e total por especialidade;
+O sistema deve escolher automaticamente um leito livro e internar o paciente, deve retornar erro caso não tenha leito livre
+
+No caso do internamento com sucesso, retornar o código do leito em que o paciente foi internado
+
+EXIBIR RELATÓRIOS POR HOSPITAL:
+
+1- Criar requisição para mostrar leitos livres por especialidade;
+
+2- Criar requisição para mostrar quarto em que o  paciente está internado
+
+3- Criar requisição para mostrar todos os leitos
+
+4- Criar requisição para mostrar a quantidade de quartos livres, ocupados e total por especialidade;
+
+5- Criar requisição que retorne pelo id do paciente que está internado: nome do hospital, especialidade/ala, código do quarto, nome do paciente e data/hora de internamento;
+
+6- Criar uma requisição que retorne de forma paginada o histórico de internamento de um paciente constando: nome do paciente, especialidade/ala, data de internamento, data de alta;
+
+7- Criar requisição que retorne uma lista de quartos que possua algum leito disponível: Especialidade/ala, código do quarto;
+
+8- Criar uma requisição que retorne a lista de todos os pacientes internados no momento, ordenados alfabeticamente e agrupados por especialidade: nome do paciente, especialidade/ala, data de internamento e quantidade de dias de internamento até o momento;
+
+9- Criar uma requisição que retorne o histórico de internação de um leito específico paginado: código do leito, nome do paciente, data de internamento e alta
+
+
+
+---- IMPORT
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
+
+	---- REPOSITORY
+
+    @Query(nativeQuery = true,
+            value = "SELECT id, codigo_leito as codigoLeito FROM leitos ",
+            countQuery = "SELECT COUNT(*) FROM leitos ")
+    Page<LeitoProjection> getLeitosOcupadosPaginado(Pageable pageable);
+
+
+    @Query(nativeQuery = true,
+            value = "SELECT * FROM leitos ",
+            countQuery = "SELECT COUNT(*) FROM leitos")
+    Page<Leitos> getLeitosTestePagina(Pageable pageable);
+
+
+
+	---- SERVICE
+
+    public Page<LeitoProjectionDTO> getLeitosOcupados(Pageable pageable) {
+        Page<LeitoProjection> leitoProjections =  this.leitoRepository.getLeitosOcupadosPaginado(pageable);
+        List<LeitoProjectionDTO> leitoProjectionDTOList = leitoProjections
+                .getContent().stream().map(p -> {
+            return new LeitoProjectionDTO(p);
+        }).toList();
+        return new PageImpl<>(leitoProjectionDTOList, pageable, leitoProjections.getTotalElements());
+    }
+
+    public Page<Leitos> getLeitosOcupadosTeste(Pageable pageable) {
+
+        Page<Leitos> pageLeitos = this.leitoRepository.getLeitosTestePagina(pageable);
+        return this.leitoRepository.getLeitosTestePagina(pageable);
+    }
+
+
+---- API
+
+    @GetMapping("/ocupados")
+    public ResponseEntity<Page<LeitoProjectionDTO>> getLeitosOcupados(Pageable pageable ) {
+        return ResponseEntity.ok(this.leitoService.getLeitosOcupados(pageable));
+    }
+
+    @GetMapping("/ocupados-teste")
+    public ResponseEntity<Page<Leitos>> getLeitosOcupadosTeste(Pageable pageable ) {
+        return ResponseEntity.ok(this.leitoService.getLeitosOcupadosTeste(pageable));
+    }
+
+
+
+--- PROJECTION
+public interface LeitoProjection {
+    public Integer getId();
+    public String getCodigoLeito();
+
+}
+
+
+--- DTO
+
+public class LeitoProjectionDTO {
+    private Integer id;
+    private String codigo;
+
+    public LeitoProjectionDTO(LeitoProjection leitoProjection) {
+        this.id = leitoProjection.getId();
+        this.codigo = leitoProjection.getCodigoLeito();
+    }
+}
+
+
+
+select
+id,
+paciente_id,
+ data_internamento,
+ cast( (now() - data_internamento) AS int) AS dias_internado
+from log_internacoes ;
+
+
 
 
 Situacao
