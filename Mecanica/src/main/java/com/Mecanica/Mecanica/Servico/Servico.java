@@ -1,4 +1,4 @@
-package com.Mecanica.Mecanica.Serviço;
+package com.Mecanica.Mecanica.Servico;
 
 import com.Mecanica.Mecanica.IdGerador.EntityId;
 import jakarta.persistence.Column;

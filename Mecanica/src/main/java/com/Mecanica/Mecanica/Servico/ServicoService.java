@@ -1,6 +1,5 @@
-package com.Mecanica.Mecanica.Serviço;
+package com.Mecanica.Mecanica.Servico;
 
-import com.Mecanica.Mecanica.Peca.Peca;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

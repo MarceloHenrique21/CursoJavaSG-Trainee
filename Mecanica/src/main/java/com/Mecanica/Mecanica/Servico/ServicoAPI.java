@@ -1,4 +1,4 @@
-package com.Mecanica.Mecanica.Serviço;
+package com.Mecanica.Mecanica.Servico;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
