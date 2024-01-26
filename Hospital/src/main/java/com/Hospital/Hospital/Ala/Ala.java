@@ -23,6 +23,8 @@ public class Ala extends EntityId {
     @OneToMany(cascade = CascadeType.ALL)
     List<Quarto> QuartoList;
 
+    private Integer qtdeQuartos;
+
     public void adicionarQuarto(Quarto quarto) {
         QuartoList.add(quarto);
     }
