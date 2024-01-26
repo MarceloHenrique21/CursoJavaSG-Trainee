@@ -25,5 +25,4 @@ public class PecaAPI {
                                     @PathVariable Integer id){
         return ResponseEntity.ok(this.pecaService.cadastro(peca));
     }
-
 }
