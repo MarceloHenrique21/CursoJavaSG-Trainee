@@ -20,9 +20,21 @@ public class PecaAPI {
         return ResponseEntity.ok(this.pecaService.cadastro(peca));
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/atualizar/{id}")
     public ResponseEntity atualizar(@RequestBody Peca peca,
                                     @PathVariable Integer id){
+        return ResponseEntity.ok(this.pecaService.cadastro(peca));
+    }
+
+    @PutMapping("/removerEstoque/{id}")
+    public ResponseEntity retirarEstoque(@RequestBody Peca peca,
+                                         @PathVariable Integer id){
+        return ResponseEntity.ok(this.pecaService.cadastro(peca));
+    }
+
+    @PutMapping("/adicionarEstoque/{id}")
+    public ResponseEntity AdicionarEstoque(@RequestBody Peca peca,
+                                         @PathVariable Integer id){
         return ResponseEntity.ok(this.pecaService.cadastro(peca));
     }
 }

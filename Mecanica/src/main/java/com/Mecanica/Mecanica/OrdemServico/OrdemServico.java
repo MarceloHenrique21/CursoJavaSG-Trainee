@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Date;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -27,4 +29,10 @@ public class OrdemServico extends EntityId {
 
     @Column(name = "cliente_id")
     private Integer cliente_id;
+
+    @Column(name = "dataInicio")
+    private Date dataInicio;
+
+    @Column(name = "dataFinalizacao")
+    private Date dataFinalziacao;
 }

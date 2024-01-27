@@ -20,14 +20,45 @@ public class PecaService {
     }
     @Transactional
     public Peca cadastro(Peca peca){
+
+        int estoque = peca.getQtdeEstoque();
+        estoque ++;
+        peca.setQtdEstoque(estoque);
         return this.pecaRepository.save(peca);
     }
 
+    @Transactional
     public Peca Atualizar(Peca peca, Integer pecaId){
         if(!peca.getId().equals(pecaId)){
             throw new RuntimeException("Id não encontrado");
         }
         this.pegaPorId(pecaId);
+        return this.cadastro(peca);
+    }
+
+    @Transactional
+    public Peca retirarEstoque(Peca peca, Integer pecaId){
+        if(!peca.getId().equals(pecaId)){
+            throw new RuntimeException("Id não encontrado");
+        }
+
+        this.pegaPorId(pecaId);
+        int estoque = peca.getQtdeEstoque();
+        estoque --;
+        peca.setQtdEstoque(estoque);
+        return this.cadastro(peca);
+    }
+
+    @Transactional
+    public Peca AdicionarEstoque(Peca peca, Integer pecaId){
+        if(!peca.getId().equals(pecaId)){
+            throw new RuntimeException("Id não encontrado");
+        }
+
+        this.pegaPorId(pecaId);
+        int estoque = peca.getQtdeEstoque();
+        estoque ++;
+        peca.setQtdEstoque(estoque);
         return this.cadastro(peca);
     }
 }

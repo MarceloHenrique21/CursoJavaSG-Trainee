@@ -30,4 +30,7 @@ public class Peca extends EntityId {
 
     @Column(name = "dataCadastro")
     private Date dataCadastro;
+
+    @Column(name = "qtdEstoque")
+    private Integer qtdEstoque = 0;
 }
