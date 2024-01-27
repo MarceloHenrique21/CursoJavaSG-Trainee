@@ -1,5 +1,8 @@
 package com.Mecanica.Mecanica.Cliente;
 
+import com.Mecanica.Mecanica.DTO.CriarOrdemServicoDTO;
+import com.Mecanica.Mecanica.OrdemServico.OrdemServico;
+import com.Mecanica.Mecanica.OrdemServico.OrdemServicoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -8,10 +11,11 @@ import org.springframework.transaction.annotation.Transactional;
 public class ClienteService {
 
     private final ClienteRepository clienteRepository;
-
+    private final OrdemServicoRepository ordemServicoRepository;
     @Autowired
-    public ClienteService(ClienteRepository clienteRepository){
+    public ClienteService(ClienteRepository clienteRepository, OrdemServicoRepository ordemServicoRepository){
         this.clienteRepository = clienteRepository;
+        this.ordemServicoRepository = ordemServicoRepository;
     }
 
     @Transactional
@@ -33,5 +37,9 @@ public class ClienteService {
         return this.cadastro(cliente);
     }
 
+//    public OrdemServico ordemServico(CriarOrdemServicoDTO criarOrdemServicoDTO){
+//
+//        return
+//    }
 
 }

@@ -48,7 +48,6 @@ public class PessoaService {
                 }
             }
 
-            // Todos os assentos estão livres
             for (Integer numeroAssento : numerosAssentos) {
                 Assentos assento = assentoRepository.findBySessaoAndNumero(sessao, numeroAssento);
                 assento.setDisponivel(false);

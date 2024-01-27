@@ -1,6 +1,7 @@
 package com.Mecanica.Mecanica.Cliente;
 
 
+import com.Mecanica.Mecanica.DTO.CriarOrdemServicoDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
@@ -22,9 +23,16 @@ public class ClienteAPI {
         return ResponseEntity.ok(this.clienteService.cadastro(cliente));
     }
 
-    @PutMapping("{id}")
+    @PutMapping("/{id}")
     public ResponseEntity atualizar(@RequestBody Cliente cliente,
                                     @PathVariable Integer id){
         return ResponseEntity.ok(this.clienteService.cadastro(cliente));
     }
+
+    @PostMapping("/criarOrdemServico")
+    public ResponseEntity<String> OrdemServico(CriarOrdemServicoDTO criarOrdemServicoDTO
+    ){
+        return ResponseEntity.ok("ordem criada");
+    }
+
 }

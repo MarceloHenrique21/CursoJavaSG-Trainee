@@ -32,8 +32,8 @@ public class Ala extends EntityId {
     public void gerarQuartos(Integer qtdeQuartos, Long hospitalId) {
         for (int i = 1; i <= qtdeQuartos; i++) {
             Quarto quarto = new Quarto();
-            quarto.setCodigo("QU" + hospitalId + "-" + i); // Exemplo: QU1-1
-            quarto.setStatus(SituacaoQuarto.COMVAGAS); // ou outro status padrão
+            quarto.setCodigo("QU" + hospitalId + "-" + i);
+            quarto.setStatus(SituacaoQuarto.COMVAGAS);
             adicionarQuarto(quarto);
             quarto.gerarLeitos(quarto.getCodigo());
         }
