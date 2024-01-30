@@ -1,7 +1,6 @@
 package com.lanchonete.lanchonete.MateriaPrima;
 
 import com.lanchonete.lanchonete.GerarId.GerarId;
-import com.lanchonete.lanchonete.Receita.Receita;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import lombok.Getter;

@@ -4,26 +4,52 @@ Sistema para lanchonete
 
 FUNCIONALIDADES:
 
+lanchonete
 - Produzir
-- Vender - deve cadastrar da data e hora em que foi vendido
-
-
+- Produzir produto atraves de seus ingredientes. ex: 1 x-salada, decrescimo nas materias primas e mudar o status do x-salada
+- Ao produzir mudar o status para JAFABRICADO
+- Controle de estoque: caso não tenha estoque a compra não pode ser feita e devera ser verificado se existe materias primas o suficiente para aquele produto comprado
+- Quando um produto final utiliza materia prima, o estoque da materia prima deve ser reduzido assim como o estoque do produto final
 - Adicionar credito a um cliente
 
-
+logsCredito
 - Logs do controle de credito do cliente
-- Controle de estoque: caso não tenha estoque a compra não pode ser feita e devera ser verificado se existe materias primas o suficiente para aquele produto comprado
-- Produzir produto atraves de seus ingredientes. ex: 1 x-salada, decrescimo nas materias primas e mudar o status do x-salada
-- Produtos feitos na hora deve ter um status de PRONTO ou NaoPronto
-- Os produtos vao ser divididos em MATERIA PRIMA e PRODUTO FINAL (materia prima não pode ser vendido apenas um produto final)
-- Quando um produto final utiliza materia prima, o estoque da materia prima deve ser reduzido assim como o estoque do produto final
-- Fazer um pedido, ao fazer um pedido é necessario passar qual é o lanche (como exemplo vou utilizar um cardapio com 1 lanche{
-    x-salada: 2xpao, 1xtomate, 1xalface, hamburguer
-})
-- logs de estoque venda, entrada de estoque, saída de estoque, entrada por produção de estoque e saída para produção de estoque
-- ao produzir um lanche deve se criar o lanche manualmente e ao fazer a venda deve vender o lanche que foi produzido
-- tambem pode-se fazer venda de produtos que não precisam de produção, por exemplo: refrigerante
 
+cliente
+- comprar - deve cadastrar da data e hora em que foi vendido -para fazer um pedido, é necessario passar qual é o lanche (
+    como exemplo vou utilizar um cardapio com 1 lanche {
+    x-salada: 2xpao, 1xtomate, 1xalface, hamburguer
+                                                            })
+- apenas os lanches com status de JAFABRICADO devem ser vendidos
+- produtos FABRICAVEL e MATERIAPRIMA não devem ser vendidos
+- tambem pode-se fazer venda de produtos que não precisam de produção, por exemplo: refrigerante (NAOFABRICAVEL)
+
+produto
+- ao cadastrar um produto ele deve ter 1 de 4 status(
+    NAOFABRICAVEL,
+
+    FABRICAVEL,
+
+    JAFABRICADO,
+
+    MATERIAPRIMA
+)
+- Os produtos vao ser divididos em MATERIA PRIMA e PRODUTO FINAL (materia prima não pode ser vendido, apenas o produto final)
+
+
+logsEstoque
+- logs de estoque {
+
+    venda,
+    entrada de estoque,
+    saída de estoque,
+    entrada por produção de estoque
+    saída para produção de estoque
+}
+
+MateriaPrima
+- fazer um cadastro basico de materias primas
+- não é possivel cadastrar uma materia prima ja com estoque, deve ser dado entrada
 
 CLASSES:
 
@@ -33,7 +59,9 @@ CLASSES:
 
 - Produtos (produto final) - um cliente compra e possui um produto
 
-- Materia prima -- não é possivel cadastrar uma materia prima ja com estoque, deve ser dado entrada
+- Materia prima
+
+- Receita - responsavel por produzir produtosMateriaPrima que serão utilizados para produzir lanches
 
 Relatórios
 

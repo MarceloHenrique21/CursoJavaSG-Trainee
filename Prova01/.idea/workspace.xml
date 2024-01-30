@@ -5,16 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="59714b57-7aa7-4105-858c-2d474da8faf8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../lanchonete/src/main/java/com/lanchonete/lanchonete/Cliente/Cliente.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../lanchonete/src/main/java/com/lanchonete/lanchonete/Enunciado/Enunciado" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../lanchonete/src/main/java/com/lanchonete/lanchonete/GerarId/GerarId.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../lanchonete/src/main/java/com/lanchonete/lanchonete/Lanchonete/Lanchonete.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../lanchonete/src/main/java/com/lanchonete/lanchonete/LogsCredito/LogsCredito.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../lanchonete/src/main/java/com/lanchonete/lanchonete/LogsEstoque/LogsEstoque.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../lanchonete/src/main/java/com/lanchonete/lanchonete/MateriaPrima/MateriaPrima.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../lanchonete/src/main/java/com/lanchonete/lanchonete/Produtos/Produtos.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../lanchonete/src/main/java/com/lanchonete/lanchonete/Receita/Receita.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../lanchonete/src/main/java/com/lanchonete/lanchonete/StatusProduto/StatusProduto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lanchonete/src/main/java/com/lanchonete/lanchonete/LanchoneteApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lanchonete/src/main/java/com/lanchonete/lanchonete/LanchoneteApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lanchonete/src/main/java/com/lanchonete/lanchonete/MateriaPrima/MateriaPrima.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lanchonete/src/main/java/com/lanchonete/lanchonete/MateriaPrima/MateriaPrima.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lanchonete/src/main/java/com/lanchonete/lanchonete/Produtos/Produtos.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lanchonete/src/main/java/com/lanchonete/lanchonete/Produtos/Produtos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lanchonete/src/main/java/com/lanchonete/lanchonete/Receita/Receita.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lanchonete/src/main/java/com/lanchonete/lanchonete/Receita/Receita.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
