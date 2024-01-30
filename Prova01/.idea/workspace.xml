@@ -4,7 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="59714b57-7aa7-4105-858c-2d474da8faf8" name="Changes" comment="" />
+    <list default="true" id="59714b57-7aa7-4105-858c-2d474da8faf8" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../lanchonete/src/main/java/com/lanchonete/lanchonete/Cliente/Cliente.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lanchonete/src/main/java/com/lanchonete/lanchonete/Enunciado/Enunciado" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lanchonete/src/main/java/com/lanchonete/lanchonete/GerarId/GerarId.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lanchonete/src/main/java/com/lanchonete/lanchonete/Lanchonete/Lanchonete.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lanchonete/src/main/java/com/lanchonete/lanchonete/LogsCredito/LogsCredito.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lanchonete/src/main/java/com/lanchonete/lanchonete/LogsEstoque/LogsEstoque.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lanchonete/src/main/java/com/lanchonete/lanchonete/MateriaPrima/MateriaPrima.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lanchonete/src/main/java/com/lanchonete/lanchonete/Produtos/Produtos.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lanchonete/src/main/java/com/lanchonete/lanchonete/Receita/Receita.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lanchonete/src/main/java/com/lanchonete/lanchonete/StatusProduto/StatusProduto.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -39,7 +50,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Time Blue Informatic/Desktop/Sg-SistemasJava/sg-trainee-java-2024/semanadois"
+    "last_opened_file_path": "C:/Users/aluno/Desktop/treinamento/sg-trainee-java-2024/Prova01"
   }
 }]]></component>
   <component name="RunManager">
@@ -60,6 +71,7 @@
     <attachedChunks>
       <set>
         <option value="jdk-21.0.1-openjdk-21.0.1-f644763e9732-f98dd351" />
+        <option value="jdk-21.0.2-openjdk-21.0.2-4caba194b151-4f524021" />
       </set>
     </attachedChunks>
   </component>
