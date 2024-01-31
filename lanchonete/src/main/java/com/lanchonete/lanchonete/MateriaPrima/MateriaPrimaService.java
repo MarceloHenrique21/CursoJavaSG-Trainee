@@ -16,6 +16,13 @@ public class MateriaPrimaService {
 
     @Transactional
     public MateriaPrima cadastrarMateriaPrima(MateriaPrima materiaPrima){
+        validarMateriaPrima(materiaPrima);
         return this.materiaPrimaRepository.save(materiaPrima);
+    }
+
+    public void validarMateriaPrima(MateriaPrima materiaPrima){
+        if(materiaPrima.getQtdEstoque() > 0){
+            throw new RuntimeException("não é possivel cadastrar um estoque maior que 0");
+        }
     }
 }
