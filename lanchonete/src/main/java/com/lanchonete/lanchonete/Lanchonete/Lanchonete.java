@@ -19,7 +19,4 @@ public class Lanchonete extends GerarId {
 
     @Column(name = "nome")
     private String nome;
-
-//    @OneToMany
-//    List<Produto> ProdutoList;
 }
