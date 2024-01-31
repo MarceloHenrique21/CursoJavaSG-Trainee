@@ -17,7 +17,7 @@ import java.util.List;
 public class Ala extends EntityId {
 
     @Column(name = "especialidade")
-   private String especialidade;
+    private String especialidade;
 
     @JoinColumn(name = "ala_id")
     @OneToMany(cascade = CascadeType.ALL)

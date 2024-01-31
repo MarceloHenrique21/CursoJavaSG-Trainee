@@ -1,7 +1,7 @@
 package com.lanchonete.lanchonete.Lanchonete;
 
 import com.lanchonete.lanchonete.GerarId.GerarId;
-import com.lanchonete.lanchonete.Produtos.Produtos;
+import com.lanchonete.lanchonete.Produtos.Produto;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
@@ -20,6 +20,6 @@ public class Lanchonete extends GerarId {
     @Column(name = "nome")
     private String nome;
 
-    @OneToMany
-    List<Produtos> ProdutoList;
+//    @OneToMany
+//    List<Produto> ProdutoList;
 }
