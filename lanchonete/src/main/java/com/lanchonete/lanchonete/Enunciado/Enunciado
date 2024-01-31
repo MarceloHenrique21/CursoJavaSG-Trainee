@@ -16,7 +16,7 @@ logsCredito
 - Logs do controle de credito do cliente
 
 cliente
-- comprar - deve cadastrar da data e hora em que foi vendido -para fazer um pedido, é necessario passar qual é o lanche (
+- comprar - deve cadastrar da data e hora em que foi vendido - para fazer um pedido, é necessario passar qual é o lanche (
     como exemplo vou utilizar um cardapio com 1 lanche {
     x-salada: 2xpao, 1xtomate, 1xalface, hamburguer
                                                             })
@@ -70,3 +70,49 @@ Relatórios
  Logs de créditos de um determinado cliente
  Histórico de vendas de um determinado cliente
  Valor total das vendas realizadas em determinado período
+
+
+
+Realizar teste:
+Produtos:
+- Pão 1,00
+- Trigo 0,50
+- Ovo 0,50
+- Batata 2,50
+- Carne moída 5,70
+- Coca - lata 3,50
+- Coca 2L 11,00
+- X-burguer 17,98
+- X-tudo 35,90
+- Combo X 75,90
+- Hamburguer 8,50
+
+Vender :
+- 2 pães
+- 3 X-burguer
+- 1 X-tudo
+- 1 Coca 2L
+- 1 Combo X
+Total = 178,74
+
+Receitas pão:
+1 trigo
+
+Receita X-burguer:
+1 pão
+1 Hamburguer
+
+Receita X-tudo
+1 pão
+1 ovo
+2 Hamburguer
+
+Receita Combo X:
+1 batata
+1 coca lata
+2 X-burguer
+1 X-tudo
+
+Receita hamburger:
+0,5 carne moída
+

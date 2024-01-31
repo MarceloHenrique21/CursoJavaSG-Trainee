@@ -21,4 +21,5 @@ public class Receita extends GerarId {
 
     @Column(name = "nomeReceita")
     private String nomeReceita;
+
 }

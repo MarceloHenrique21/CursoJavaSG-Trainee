@@ -2,6 +2,7 @@ package com.lanchonete.lanchonete.Produtos;
 
 import com.lanchonete.lanchonete.GerarId.GerarId;
 
+import com.lanchonete.lanchonete.Receita.Receita;
 import com.lanchonete.lanchonete.StatusProduto.StatusProduto;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -9,6 +10,8 @@ import jakarta.persistence.OneToOne;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.List;
 
 @Getter
 @Setter
@@ -21,4 +24,5 @@ public class Produto extends GerarId {
 
     @Column(name = "statusProduto")
     private StatusProduto Status;
+
 }

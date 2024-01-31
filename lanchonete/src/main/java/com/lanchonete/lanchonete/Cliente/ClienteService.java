@@ -1,21 +1,43 @@
 package com.lanchonete.lanchonete.Cliente;
 
+import com.lanchonete.lanchonete.DTO.ComprarProdutoDTO;
+import com.lanchonete.lanchonete.Produtos.Produto;
+import com.lanchonete.lanchonete.Produtos.ProdutoRepository;
+import com.lanchonete.lanchonete.StatusProduto.StatusProduto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Date;
 
 @Service
 public class ClienteService {
 
     private ClienteRepository clienteRepository;
+    private ProdutoRepository produtoRepository;
 
     @Autowired
-    public ClienteService(ClienteRepository clienteRepository){
+    public ClienteService(ClienteRepository clienteRepository, ProdutoRepository produtoRepository){
         this.clienteRepository = clienteRepository;
+        this.produtoRepository = produtoRepository;
     }
 
     @Transactional
     public Cliente salvaCliente(Cliente cliente){
        return this.clienteRepository.save(cliente);
+    }
+
+    @Transactional
+    public void ComprarProduto(ComprarProdutoDTO dto){
+
+        Date dataVenda = dto.getDataVenda();
+        Integer idProduto = dto.getIdProduto();
+
+        Produto produto = produtoRepository.findById(idProduto)
+                .orElseThrow(() -> new RuntimeException("Produto não encontrado"));
+
+        if (!produto.getStatus().equals("JAFABRICADO")) {
+            throw new RuntimeException("Este produto não está disponível para compra no momento.");
+        }
     }
 }
