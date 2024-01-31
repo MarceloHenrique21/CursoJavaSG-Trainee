@@ -22,7 +22,16 @@ public class Produto extends GerarId {
     @Column(name = "nome")
     private String nome;
 
+    @Column(name = "preco")
+    private Integer preco;
+
+    @Column(name = "quantidade")
+    private Integer quantidade;
+
     @Column(name = "statusProduto")
     private StatusProduto Status;
+
+    @Column(name = "estoque")
+    private Integer estoque;
 
 }
