@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/cliente")
 public class ClienteAPI {
@@ -25,14 +27,13 @@ public class ClienteAPI {
         return ResponseEntity.ok(this.clienteService.salvaCliente(cliente));
     }
 
-    @PostMapping("/comprarProduto")
-    public ResponseEntity<String> comprarProduto(@RequestBody ComprarProdutoDTO dto) {
+    @PostMapping("/comprar")
+    public ResponseEntity<String> comprarProdutos(@RequestBody List<ComprarProdutoDTO> dtos) {
         try {
-            clienteService.ComprarProduto(dto);
-            return ResponseEntity.ok("Compra realizada com sucesso!");
+            clienteService.comprarProdutos(dtos);
+            return ResponseEntity.ok("Compras realizadas com sucesso!");
 
         } catch (RuntimeException e) {
-
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
     }

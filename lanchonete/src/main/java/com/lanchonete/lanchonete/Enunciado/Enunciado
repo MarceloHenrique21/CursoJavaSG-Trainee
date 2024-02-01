@@ -68,9 +68,8 @@ Relatórios
  Histórico de vendas de um determinado cliente
  Valor total das vendas realizadas em determinado período
 
-
-
 Realizar teste:
+
 Produtos:
 - Pão 1,00
 - Trigo 0,50
@@ -84,7 +83,7 @@ Produtos:
 - Combo X 75,90
 - Hamburguer 8,50
 
-Vender :
+Vender:
 - 2 pães
 - 3 X-burguer
 - 1 X-tudo
@@ -113,3 +112,16 @@ Receita Combo X:
 Receita hamburger:
 0,5 carne moída
 
+Adicionar custo ao produto
+
+O item vendido além de salvar o valor de venda do produto também deve salvar o valor de custo atual do produto
+
+A venda além de salvar o valor de venda total, também deve salvar o valor de custo total
+
+Fazer um get que irá trazer de um determinado periodo
+
+valor de venda total das vendas do período
+
+custo de venda total das vendas do período
+
+lucro total das vendas do período

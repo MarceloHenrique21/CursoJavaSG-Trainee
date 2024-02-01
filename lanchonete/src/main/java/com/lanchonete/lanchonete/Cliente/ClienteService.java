@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class ClienteService {
@@ -27,23 +28,33 @@ public class ClienteService {
        return this.clienteRepository.save(cliente);
     }
 
-    @Transactional
-    public void ComprarProduto(ComprarProdutoDTO dto){
+    public void comprarProdutos(List<ComprarProdutoDTO> dtos) {
+        for (ComprarProdutoDTO dto : dtos) {
+            double precoTotal = 0.0;
 
-        Date dataVenda = dto.getDataVenda();
-        Integer idProduto = dto.getIdProduto();
-        Produto produto = produtoRepository.findById(idProduto)
-                .orElseThrow(() -> new RuntimeException("Produto não encontrado"));
+            for (Integer idProduto : dto.getIdProduto()) {
+                Produto produto = produtoRepository.findById(idProduto)
+                        .orElseThrow(() -> new RuntimeException("Produto não encontrado com ID: " + idProduto));
 
-        Integer novoEstoque = produto.getEstoque() - 1;
-        produto.setEstoque(novoEstoque);
+                if (produto.getEstoque() <= 0) {
+                    throw new RuntimeException("Estoque insuficiente para realizar a compra do produto com ID: " + idProduto);
+                }
 
-        if (novoEstoque < 0) {
-            throw new RuntimeException("Estoque insuficiente para realizar a compra.");
-        }
+                produto.setEstoque(produto.getEstoque() - 1);
 
-        if (!produto.getStatus().equals("JAFABRICADO") && !produto.getStatus().equals("NAOFABRICAVEL")) {
-            throw new RuntimeException("Este produto não está disponível para compra no momento.");
+                if (!produto.getStatus().equals(StatusProduto.JAFABRICADO) && !produto.getStatus().equals(StatusProduto.NAOFABRICAVEL)) {
+                    throw new RuntimeException("Este produto não está disponível para compra no momento: " + produto.getNome());
+                }
+                precoTotal += produto.getPreco();
+            }
+
+            System.out.println("Preço total da compra: " + precoTotal);
         }
     }
 }
+
+
+
+
+
+
