@@ -16,10 +16,7 @@ logsCredito
 - Logs do controle de credito do cliente
 
 cliente
-- comprar - deve cadastrar da data e hora em que foi vendido - para fazer um pedido, é necessario passar qual é o lanche (
-    como exemplo vou utilizar um cardapio com 1 lanche {
-    x-salada: 2xpao, 1xtomate, 1xalface, hamburguer
-                                                            })
+- comprar - deve cadastrar da data e hora em que foi vendido - para fazer um pedido, é necessario passar qual é o lanche
 - apenas os lanches com status de JAFABRICADO devem ser vendidos
 - produtos FABRICAVEL e MATERIAPRIMA não devem ser vendidos
 - tambem pode-se fazer venda de produtos que não precisam de produção, por exemplo: refrigerante (NAOFABRICAVEL)

@@ -30,7 +30,9 @@ public class ClienteAPI {
         try {
             clienteService.ComprarProduto(dto);
             return ResponseEntity.ok("Compra realizada com sucesso!");
+
         } catch (RuntimeException e) {
+
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
     }

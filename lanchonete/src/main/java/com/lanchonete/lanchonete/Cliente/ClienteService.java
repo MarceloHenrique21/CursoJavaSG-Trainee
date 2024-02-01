@@ -32,11 +32,17 @@ public class ClienteService {
 
         Date dataVenda = dto.getDataVenda();
         Integer idProduto = dto.getIdProduto();
-
         Produto produto = produtoRepository.findById(idProduto)
                 .orElseThrow(() -> new RuntimeException("Produto não encontrado"));
 
-        if (!produto.getStatus().equals("JAFABRICADO")) {
+        Integer novoEstoque = produto.getEstoque() - 1;
+        produto.setEstoque(novoEstoque);
+
+        if (novoEstoque < 0) {
+            throw new RuntimeException("Estoque insuficiente para realizar a compra.");
+        }
+
+        if (!produto.getStatus().equals("JAFABRICADO") && !produto.getStatus().equals("NAOFABRICAVEL")) {
             throw new RuntimeException("Este produto não está disponível para compra no momento.");
         }
     }
