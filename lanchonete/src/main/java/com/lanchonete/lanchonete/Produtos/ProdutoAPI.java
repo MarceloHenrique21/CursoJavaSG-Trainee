@@ -21,7 +21,7 @@ public class ProdutoAPI {
         return ResponseEntity.ok(this.produtoService.cadastrarProduto(produto));
     }
 
-    @PatchMapping("/estoque/{id}")
+    @PutMapping("/estoque/{id}")
     public ResponseEntity<String> atualizarEstoque(@PathVariable Integer id, @RequestParam int quantidade) {
         try {
             produtoService.atualizarEstoque(id, quantidade);

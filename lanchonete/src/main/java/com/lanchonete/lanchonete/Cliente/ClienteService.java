@@ -33,6 +33,7 @@ public class ClienteService {
             double precoTotal = 0.0;
 
             for (Integer idProduto : dto.getIdProduto()) {
+
                 Produto produto = produtoRepository.findById(idProduto)
                         .orElseThrow(() -> new RuntimeException("Produto não encontrado com ID: " + idProduto));
 
@@ -41,16 +42,16 @@ public class ClienteService {
                 }
 
                 produto.setEstoque(produto.getEstoque() - 1);
-
-                if (!produto.getStatus().equals(StatusProduto.JAFABRICADO) && !produto.getStatus().equals(StatusProduto.NAOFABRICAVEL)) {
-                    throw new RuntimeException("Este produto não está disponível para compra no momento: " + produto.getNome());
-                }
                 precoTotal += produto.getPreco();
+
+                produtoRepository.save(produto);
+                System.out.println("Produto com ID " + idProduto + " comprado com sucesso. Novo estoque: " + produto.getEstoque());
             }
 
             System.out.println("Preço total da compra: " + precoTotal);
         }
     }
+
 }
 
 

@@ -14,8 +14,6 @@ import java.util.List;
 public class ComprarProdutoDTO {
     private Date dataVenda;
     private List<Integer> idProduto;
-    private StatusProduto statusLanches = StatusProduto.JAFABRICADO;
-    private StatusProduto statusOutros = StatusProduto.NAOFABRICAVEL;
 
     public ComprarProdutoDTO(List<Integer> idProduto) {
         this.dataVenda = new Date();

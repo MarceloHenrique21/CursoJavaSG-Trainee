@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="59714b57-7aa7-4105-858c-2d474da8faf8" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../lanchonete/src/main/java/com/lanchonete/lanchonete/LanchoneteApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lanchonete/src/main/java/com/lanchonete/lanchonete/LanchoneteApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lanchonete/src/main/java/com/lanchonete/lanchonete/MateriaPrima/MateriaPrima.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lanchonete/src/main/java/com/lanchonete/lanchonete/MateriaPrima/MateriaPrima.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lanchonete/src/main/java/com/lanchonete/lanchonete/Produtos/Produtos.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lanchonete/src/main/java/com/lanchonete/lanchonete/Produtos/Produtos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lanchonete/src/main/java/com/lanchonete/lanchonete/Receita/Receita.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lanchonete/src/main/java/com/lanchonete/lanchonete/Receita/Receita.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lanchonete/h2db.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/../lanchonete/h2db.mv.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lanchonete/src/main/java/com/lanchonete/lanchonete/Cliente/ClienteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lanchonete/src/main/java/com/lanchonete/lanchonete/Cliente/ClienteService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lanchonete/src/main/java/com/lanchonete/lanchonete/DTO/ComprarProdutoDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lanchonete/src/main/java/com/lanchonete/lanchonete/DTO/ComprarProdutoDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lanchonete/src/main/java/com/lanchonete/lanchonete/Produtos/ProdutoAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lanchonete/src/main/java/com/lanchonete/lanchonete/Produtos/ProdutoAPI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,16 +37,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/aluno/Desktop/treinamento/sg-trainee-java-2024/Prova01"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/aluno/Desktop/treinamento/sg-trainee-java-2024/Prova01&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
