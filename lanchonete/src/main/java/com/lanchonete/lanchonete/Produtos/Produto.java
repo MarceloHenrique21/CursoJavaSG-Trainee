@@ -24,6 +24,9 @@ public class Produto extends GerarId {
     @Column(name = "preco")
     private Integer preco;
 
+    @Column(name = "quantidade")
+    private Integer quantidade;
+
     @Enumerated(EnumType.STRING)
     @Column(name = "statusProduto")
     private StatusProduto Status;

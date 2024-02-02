@@ -1,0 +1,68 @@
+[
+  {
+    "nome": "Pão",
+    "preco": 1.00,
+    "statusProduto": "JAFABRICADO",
+    "estoque": 0
+  },
+  {
+    "nome": "Trigo",
+    "preco": 0.50,
+    "statusProduto": "JAFABRICADO",
+    "estoque": 0
+  },
+  {
+    "nome": "Ovo",
+    "preco": 0.50,
+    "statusProduto": "JAFABRICADO",
+    "estoque": 0
+  },
+  {
+    "nome": "Batata",
+    "preco": 2.50,
+    "statusProduto": "JAFABRICADO",
+    "estoque": 0
+  },
+  {
+    "nome": "Carne moída",
+    "preco": 5.70,
+    "statusProduto": "JAFABRICADO",
+    "estoque": 0
+  },
+  {
+    "nome": "Coca - lata",
+    "preco": 3.50,
+    "statusProduto": "JAFABRICADO",
+    "estoque": 0
+  },
+  {
+    "nome": "Coca 2L",
+    "preco": 11.00,
+    "statusProduto": "JAFABRICADO",
+    "estoque": 0
+  },
+  {
+    "nome": "X-burguer",
+    "preco": 17.98,
+    "statusProduto": "JAFABRICADO",
+    "estoque": 0
+  },
+  {
+    "nome": "X-tudo",
+    "preco": 35.90,
+    "statusProduto": "JAFABRICADO",
+    "estoque": 0
+  },
+  {
+    "nome": "Combo X",
+    "preco": 75.90,
+    "statusProduto": "JAFABRICADO",
+    "estoque": 0
+  },
+  {
+    "nome": "Hamburguer",
+    "preco": 8.50,
+    "statusProduto": "JAFABRICADO",
+    "estoque": 0
+  }
+]

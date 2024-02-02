@@ -13,12 +13,12 @@ import java.util.List;
 @NoArgsConstructor
 public class ComprarProdutoDTO {
     private Date dataVenda;
-    private List<Integer> idProduto;
-
-    public ComprarProdutoDTO(List<Integer> idProduto) {
-        this.dataVenda = new Date();
-        this.idProduto = idProduto;
+    private List<ItemCompraDTO> produtos;
+    public ComprarProdutoDTO(Date dataVenda, List<ItemCompraDTO> produtos) {
+        this.dataVenda = dataVenda;
+        this.produtos = produtos;
     }
 }
+
 
 
