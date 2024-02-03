@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/materias-primas")
+@RequestMapping("/materiaPrima")
 public class MateriaPrimaAPI {
 
     private final MateriaPrimaService materiaPrimaService;
@@ -18,7 +18,22 @@ public class MateriaPrimaAPI {
 
     @PostMapping
     public ResponseEntity<MateriaPrima> cadastrarMateriaPrima(@RequestBody MateriaPrima materiaPrima) {
-        MateriaPrima novaMateriaPrima = materiaPrimaService.cadastrarMateriaPrima(materiaPrima);
-        return new ResponseEntity<>(novaMateriaPrima, HttpStatus.CREATED);
+        return ResponseEntity.ok(this.materiaPrimaService.cadastrarMateriaPrima(materiaPrima));
+    }
+
+    @PutMapping("/estoque/{id}")
+    public ResponseEntity<String> atualizarEstoque(@PathVariable Integer id, @RequestParam int quantidade) {
+        try {
+            materiaPrimaService.atualizarEstoque(id, quantidade);
+            return ResponseEntity.ok("Estoque atualizado com sucesso");
+
+        } catch (IllegalArgumentException e) {
+
+            return ResponseEntity.badRequest().body(e.getMessage());
+
+        } catch (RuntimeException e) {
+
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Produto não encontrado");
+        }
     }
 }

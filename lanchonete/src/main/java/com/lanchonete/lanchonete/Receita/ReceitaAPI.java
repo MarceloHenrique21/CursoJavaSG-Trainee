@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/receitas")
+@RequestMapping("/receita")
 public class ReceitaAPI {
 
     private final ReceitaService receitaService;
@@ -18,7 +18,6 @@ public class ReceitaAPI {
 
     @PostMapping
     public ResponseEntity<Receita> cadastrarReceita(@RequestBody Receita receita) {
-        Receita novaReceita = receitaService.cadastrarReceita(receita);
-        return new ResponseEntity<>(novaReceita, HttpStatus.CREATED);
+        return ResponseEntity.ok(this.receitaService.cadastrarReceita(receita));
     }
 }

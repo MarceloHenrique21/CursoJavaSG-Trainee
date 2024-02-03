@@ -17,18 +17,7 @@ public class ProdutoService {
 
     @Transactional
     public Produto cadastrarProduto(Produto produto){
-        if (validar(produto)) {
-            return this.produtoRepository.save(produto);
-        } else {
-            throw new IllegalArgumentException("Produto não pode ser cadastrado: não atende aos critérios de validação.");
-        }
-    }
-
-    public boolean validar(Produto produto){
-        if ( produto.getEstoque() == 0){
-            return true;
-        }
-        return false;
+        return this.produtoRepository.save(produto);
     }
 
     public void atualizarEstoque(Integer idProduto, int quantidade) {
